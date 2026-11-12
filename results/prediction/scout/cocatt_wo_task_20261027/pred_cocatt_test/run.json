@@ -1,0 +1,103 @@
+{
+  "model": "SCOUT w/o task (frames only)",
+  "run_dir": "$RESULTS/scout/cocatt_wo_task_20261027",
+  "weights": "$RESULTS/scout/cocatt_wo_task_20261027/checkpoint_7.pt",
+  "weights_sha256": "d994d08c53d75d7654febaca33aa97b39da285a2ac107a539f39c64f6e7d64f5",
+  "params": 33347343,
+  "config": {
+    "best_weights": "checkpoint_7.pt",
+    "dataset": "CoCAtt",
+    "last_weights": "None",
+    "model_class": "SCOUT_task",
+    "model_params": {
+      "clip_size": 16,
+      "img_size": [
+        224,
+        224
+      ],
+      "num_encoder_layers": 4,
+      "pretrained_backbone": true,
+      "task_attributes": [
+        "current_action",
+        "local_context"
+      ],
+      "train_backbone": true,
+      "transformer_params": {
+        "add_and_norm": true,
+        "fuse_idx": [
+          1,
+          2
+        ],
+        "num_att_heads": [
+          2,
+          2,
+          2
+        ]
+      },
+      "use_task": false
+    },
+    "test_params": {
+      "batch_size": 4,
+      "eval": null,
+      "metrics": [
+        "KLdiv",
+        "NSS",
+        "SIM",
+        "CC"
+      ],
+      "save_images": false
+    },
+    "train_params": {
+      "batch_size": 4,
+      "early_stop": true,
+      "log_interval": 10,
+      "loss": {
+        "cc": false,
+        "cc_coeff": -1.0,
+        "kldiv": true,
+        "kldiv_coeff": 1.0,
+        "l1": false,
+        "l1_coeff": 1.0,
+        "nss": false,
+        "nss_coeff": 1.0,
+        "sim": false,
+        "sim_coeff": -1.0
+      },
+      "lr": 0.0001,
+      "lr_sched": true,
+      "no_epochs": 20,
+      "no_workers": 6,
+      "optimizer": "Adam",
+      "weight_type": "KLdiv",
+      "weighted_loss": false,
+      "weighted_sampler": false
+    }
+  },
+  "manifest": "./meta/splits/cocatt_test.csv",
+  "manifest_sha256": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251",
+  "clip_size": 16,
+  "clip_fps": 4,
+  "clip_seconds": 4.0,
+  "clip_padding": "repeat frame 0 at session start",
+  "input_size": [
+    224,
+    224
+  ],
+  "output_size": [
+    224,
+    224
+  ],
+  "frames_per_vid": {
+    "J_0": 2113,
+    "J_1": 2183,
+    "J_2": 2129,
+    "J_3": 2100,
+    "K_0": 2159,
+    "K_1": 2164,
+    "K_2": 2181
+  },
+  "total_frames": 15029,
+  "note": "native decoder output, before SCOUT blur/resize; scorer applies protocol blur",
+  "pred_sha256": "0b72a8464ab0d1792a9f8b03ed1f66c515bef2dddc8c70a793dad1883940586a",
+  "seconds": 546.7774212360382
+}

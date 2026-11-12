@@ -1,0 +1,63 @@
+{
+  "args": {
+    "hub": "dinov3_vitb16",
+    "weights": "$MODELS/dinov3/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth",
+    "repo": "$BASELINES/dinov3",
+    "root": "$DATASETS/BDDA",
+    "splits": "meta/splits",
+    "test_manifests": "test_common",
+    "out": "$RESULTS/dinov3/bdda_vitb16_light_s10",
+    "input": [
+      288,
+      512
+    ],
+    "target": [
+      72,
+      128
+    ],
+    "pred_size": [
+      72,
+      128
+    ],
+    "width": 128,
+    "epochs": 30,
+    "bs": 32,
+    "lr": 0.001,
+    "wd": 0.0001,
+    "warmup": 500,
+    "stride": 10,
+    "val_stride": 5,
+    "workers": 4,
+    "gpu": 0,
+    "seed": 0,
+    "max_steps": 0,
+    "log_every": 100,
+    "no_predict": false,
+    "predict_only": false,
+    "ckpt": null,
+    "cache": "/srv/cache/bdda_288x512"
+  },
+  "torch": "2.7.1+cu126",
+  "cuda": "12.6",
+  "gpu": "Tesla PG500-216",
+  "weights_sha256": "73cec8be7427c8655ceced13ce62f6e20a1fa90d1b4d4a550df17a1144081a7c",
+  "dinov3_commit": "6876159a11b4df116f30f667f8c9888617df0751",
+  "code_sha256": {
+    "gazehead.py": "6158d66ab42435b2d5aef83fdf0c79ec643735008d8cfb95b9b596c6a0154c86",
+    "data.py": "ee8facbbf8e41f09812f4c34e16be9ab1b3b999d73858013a04290228edbbc99",
+    "train_gaze.py": "644bc1dc7e86f27e8b54b88a7d2b27d5f8446561de3a404bc9cb3a8ad87bad46"
+  },
+  "manifests": {
+    "excluded_videos.csv": "812579d39fa50521009c0f40b632a9d11727a05d87d776b2158b0f4b5d41def9",
+    "test_common.csv": "2337357d905e2687c4943f3bd9a8c80f34bd4b489c864493d6f566f2f57b8193",
+    "test_salm2_own.csv": "f4b1009dad5c5bc56b1e949dfd90b42ccd8d6cc9ad17a169492c75a31b57bd59",
+    "train.csv": "a9901b15a4fedf7aeae8c8398e533a4d1975614f11a7cb072def19bb3a1da7dc",
+    "val.csv": "a0318154ed22c1262a268859a16adafe648cf95fec928bc02a00c217a3a870a4"
+  },
+  "decoder_params": {
+    "bn": 6144,
+    "adapter": 393344,
+    "body": 92289,
+    "total": 491777
+  }
+}

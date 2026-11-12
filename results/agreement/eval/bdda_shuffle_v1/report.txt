@@ -1,0 +1,285 @@
+source run: /srv/results/eval/bdda_pairwise_v2/run.json
+videos 294, stride 1, derangements 5, group_by_subject False
+
+reference check: {
+ "reference": "/srv/results/eval/bdda_pairwise_v2/agreement_per_video.csv",
+ "n_compared": 77616,
+ "max_abs_diff": 1.484596252598891e-07,
+ "max_abs_diff_by": {
+  "cf_CC": 1.46080017082717e-07,
+  "cf_SIM": 1.4282913207708248e-07,
+  "raw_CC": 1.484596252598891e-07,
+  "raw_SIM": 1.454055785776731e-07
+ },
+ "note": "exact agreement expected only at --frame-stride 1"
+}
+
+== model vs human (b = gt) ==
+                   a  b variant metric  matched  shuffled   gap  ci_lo  ci_hi  videos_gap_pos  n_videos
+      vjepa21_l_bdda gt      cf     CC    0.613     0.010 0.603  0.584  0.622             293       294
+       dinov3_l_bdda gt      cf     CC    0.575     0.006 0.569  0.549  0.589             293       294
+  scout_wo_task_bdda gt      cf     CC    0.498     0.005 0.493  0.472  0.514             290       294
+          salm2_bdda gt      cf     CC    0.496     0.006 0.490  0.467  0.513             291       294
+    vjepa21_l_cocatt gt      cf     CC    0.475     0.007 0.468  0.446  0.491             290       294
+     dinov3_l_cocatt gt      cf     CC    0.429     0.004 0.425  0.402  0.447             289       294
+               u2net gt      cf     CC    0.162     0.004 0.158  0.139  0.177             246       294
+               mlnet gt      cf     CC    0.116     0.011 0.105  0.081  0.130             196       294
+scout_wo_task_cocatt gt      cf     CC    0.069     0.011 0.058  0.034  0.082             174       294
+        salm2_cocatt gt      cf     CC    0.040     0.006 0.034  0.014  0.053             155       294
+                gbvs gt      cf     CC    0.038     0.013 0.025 -0.001  0.051             152       294
+      vjepa21_l_bdda gt      cf    SIM    0.470     0.120 0.351  0.338  0.363             294       294
+       dinov3_l_bdda gt      cf    SIM    0.437     0.119 0.318  0.305  0.331             293       294
+  scout_wo_task_bdda gt      cf    SIM    0.391     0.127 0.264  0.251  0.276             291       294
+          salm2_bdda gt      cf    SIM    0.386     0.130 0.257  0.243  0.271             291       294
+    vjepa21_l_cocatt gt      cf    SIM    0.376     0.121 0.255  0.242  0.268             293       294
+     dinov3_l_cocatt gt      cf    SIM    0.336     0.116 0.220  0.208  0.233             288       294
+               u2net gt      cf    SIM    0.151     0.066 0.084  0.074  0.094             256       294
+               mlnet gt      cf    SIM    0.082     0.043 0.039  0.033  0.044             233       294
+scout_wo_task_cocatt gt      cf    SIM    0.078     0.055 0.024  0.017  0.031             178       294
+        salm2_cocatt gt      cf    SIM    0.056     0.046 0.010  0.004  0.016             151       294
+                gbvs gt      cf    SIM    0.054     0.044 0.010  0.006  0.014             162       294
+      vjepa21_l_bdda gt     raw     CC    0.711     0.267 0.444  0.428  0.460             294       294
+       dinov3_l_bdda gt     raw     CC    0.680     0.285 0.395  0.378  0.412             292       294
+  scout_wo_task_bdda gt     raw     CC    0.632     0.296 0.336  0.319  0.353             289       294
+          salm2_bdda gt     raw     CC    0.629     0.312 0.317  0.298  0.336             283       294
+    vjepa21_l_cocatt gt     raw     CC    0.614     0.271 0.343  0.326  0.360             291       294
+     dinov3_l_cocatt gt     raw     CC    0.575     0.257 0.317  0.301  0.334             288       294
+               mlnet gt     raw     CC    0.313     0.147 0.166  0.153  0.180             270       294
+                gbvs gt     raw     CC    0.264     0.199 0.065  0.055  0.076             227       294
+scout_wo_task_cocatt gt     raw     CC    0.231     0.163 0.068  0.056  0.080             215       294
+               u2net gt     raw     CC    0.226     0.097 0.129  0.115  0.145             253       294
+        salm2_cocatt gt     raw     CC    0.152     0.124 0.028  0.017  0.040             181       294
+      vjepa21_l_bdda gt     raw    SIM    0.542     0.258 0.284  0.274  0.295             294       294
+       dinov3_l_bdda gt     raw    SIM    0.508     0.269 0.239  0.229  0.249             294       294
+  scout_wo_task_bdda gt     raw    SIM    0.484     0.276 0.208  0.198  0.218             291       294
+    vjepa21_l_cocatt gt     raw    SIM    0.472     0.261 0.211  0.201  0.221             294       294
+          salm2_bdda gt     raw    SIM    0.469     0.282 0.187  0.177  0.198             285       294
+     dinov3_l_cocatt gt     raw    SIM    0.443     0.253 0.190  0.181  0.200             288       294
+               mlnet gt     raw    SIM    0.211     0.160 0.051  0.046  0.056             260       294
+scout_wo_task_cocatt gt     raw    SIM    0.210     0.179 0.030  0.024  0.036             216       294
+               u2net gt     raw    SIM    0.208     0.121 0.088  0.078  0.098             251       294
+                gbvs gt     raw    SIM    0.181     0.166 0.015  0.011  0.019             192       294
+        salm2_cocatt gt     raw    SIM    0.171     0.159 0.012  0.005  0.018             177       294
+
+== model vs model ==
+                   a                    b variant metric  matched  shuffled   gap  ci_lo  ci_hi  videos_gap_pos  n_videos
+                gbvs                mlnet     raw     CC    0.615     0.385 0.230  0.218  0.242             289       294
+                gbvs                mlnet     raw    SIM    0.711     0.630 0.081  0.077  0.086             292       294
+                gbvs                mlnet      cf     CC    0.881     0.829 0.052  0.045  0.058             260       294
+                gbvs                mlnet      cf    SIM    0.612     0.502 0.110  0.104  0.116             286       294
+                gbvs                u2net     raw     CC    0.232     0.130 0.102  0.089  0.115             238       294
+                gbvs                u2net     raw    SIM    0.202     0.178 0.024  0.016  0.032             180       294
+                gbvs                u2net      cf     CC    0.337     0.301 0.035  0.009  0.063             180       294
+                gbvs                u2net      cf    SIM    0.136     0.111 0.025  0.016  0.034             176       294
+                gbvs        dinov3_l_bdda     raw     CC    0.393     0.298 0.095  0.083  0.107             247       294
+                gbvs        dinov3_l_bdda     raw    SIM    0.388     0.362 0.026  0.019  0.034             182       294
+                gbvs        dinov3_l_bdda      cf     CC    0.083     0.043 0.040  0.005  0.076             169       294
+                gbvs        dinov3_l_bdda      cf    SIM    0.122     0.098 0.024  0.015  0.033             164       294
+                gbvs      dinov3_l_cocatt     raw     CC    0.375     0.289 0.087  0.074  0.099             228       294
+                gbvs      dinov3_l_cocatt     raw    SIM    0.359     0.332 0.027  0.020  0.034             193       294
+                gbvs      dinov3_l_cocatt      cf     CC    0.116     0.081 0.036  0.000  0.071             158       294
+                gbvs      dinov3_l_cocatt      cf    SIM    0.133     0.105 0.027  0.019  0.036             180       294
+                gbvs       vjepa21_l_bdda     raw     CC    0.355     0.269 0.086  0.073  0.099             225       294
+                gbvs       vjepa21_l_bdda     raw    SIM    0.350     0.326 0.024  0.016  0.032             181       294
+                gbvs       vjepa21_l_bdda      cf     CC    0.073     0.037 0.036  0.001  0.071             162       294
+                gbvs       vjepa21_l_bdda      cf    SIM    0.109     0.088 0.021  0.013  0.029             164       294
+                gbvs     vjepa21_l_cocatt     raw     CC    0.357     0.278 0.079  0.065  0.092             219       294
+                gbvs     vjepa21_l_cocatt     raw    SIM    0.351     0.330 0.021  0.013  0.028             176       294
+                gbvs     vjepa21_l_cocatt      cf     CC    0.095     0.063 0.033 -0.003  0.069             164       294
+                gbvs     vjepa21_l_cocatt      cf    SIM    0.104     0.087 0.018  0.010  0.026             166       294
+                gbvs   scout_wo_task_bdda     raw     CC    0.383     0.295 0.088  0.075  0.102             233       294
+                gbvs   scout_wo_task_bdda     raw    SIM    0.364     0.337 0.027  0.019  0.034             186       294
+                gbvs   scout_wo_task_bdda      cf     CC    0.032    -0.008 0.040  0.004  0.076             157       294
+                gbvs   scout_wo_task_bdda      cf    SIM    0.118     0.093 0.025  0.016  0.034             174       294
+                gbvs scout_wo_task_cocatt     raw     CC    0.503     0.371 0.132  0.118  0.145             254       294
+                gbvs scout_wo_task_cocatt     raw    SIM    0.579     0.533 0.046  0.039  0.053             215       294
+                gbvs scout_wo_task_cocatt      cf     CC    0.745     0.708 0.038  0.024  0.051             201       294
+                gbvs scout_wo_task_cocatt      cf    SIM    0.415     0.356 0.059  0.049  0.069             222       294
+                gbvs           salm2_bdda     raw     CC    0.396     0.301 0.095  0.080  0.110             227       294
+                gbvs           salm2_bdda     raw    SIM    0.405     0.375 0.030  0.023  0.037             194       294
+                gbvs           salm2_bdda      cf     CC    0.036    -0.008 0.044  0.005  0.082             153       294
+                gbvs           salm2_bdda      cf    SIM    0.134     0.102 0.032  0.022  0.042             171       294
+                gbvs         salm2_cocatt     raw     CC    0.313     0.265 0.048  0.030  0.066             183       294
+                gbvs         salm2_cocatt     raw    SIM    0.420     0.404 0.016  0.009  0.024             178       294
+                gbvs         salm2_cocatt      cf     CC    0.584     0.569 0.015  0.003  0.027             178       294
+                gbvs         salm2_cocatt      cf    SIM    0.254     0.235 0.019  0.013  0.025             181       294
+               mlnet                u2net     raw     CC    0.325     0.090 0.235  0.219  0.251             283       294
+               mlnet                u2net     raw    SIM    0.244     0.169 0.075  0.067  0.082             257       294
+               mlnet                u2net      cf     CC    0.399     0.266 0.133  0.111  0.156             230       294
+               mlnet                u2net      cf    SIM    0.174     0.102 0.072  0.063  0.081             241       294
+               mlnet        dinov3_l_bdda     raw     CC    0.451     0.221 0.230  0.215  0.244             288       294
+               mlnet        dinov3_l_bdda     raw    SIM    0.411     0.335 0.075  0.068  0.083             256       294
+               mlnet        dinov3_l_bdda      cf     CC    0.208     0.039 0.169  0.137  0.201             211       294
+               mlnet        dinov3_l_bdda      cf    SIM    0.160     0.087 0.073  0.063  0.083             229       294
+               mlnet      dinov3_l_cocatt     raw     CC    0.374     0.210 0.164  0.148  0.180             268       294
+               mlnet      dinov3_l_cocatt     raw    SIM    0.368     0.306 0.062  0.054  0.070             247       294
+               mlnet      dinov3_l_cocatt      cf     CC    0.184     0.073 0.111  0.078  0.144             194       294
+               mlnet      dinov3_l_cocatt      cf    SIM    0.152     0.095 0.057  0.048  0.066             222       294
+               mlnet       vjepa21_l_bdda     raw     CC    0.408     0.199 0.209  0.193  0.224             285       294
+               mlnet       vjepa21_l_bdda     raw    SIM    0.376     0.302 0.074  0.066  0.082             252       294
+               mlnet       vjepa21_l_bdda      cf     CC    0.181     0.033 0.148  0.116  0.179             202       294
+               mlnet       vjepa21_l_bdda      cf    SIM    0.144     0.078 0.066  0.057  0.075             228       294
+               mlnet     vjepa21_l_cocatt     raw     CC    0.361     0.202 0.159  0.143  0.175             254       294
+               mlnet     vjepa21_l_cocatt     raw    SIM    0.356     0.304 0.052  0.044  0.060             229       294
+               mlnet     vjepa21_l_cocatt      cf     CC    0.165     0.055 0.110  0.077  0.143             187       294
+               mlnet     vjepa21_l_cocatt      cf    SIM    0.123     0.079 0.044  0.035  0.053             214       294
+               mlnet   scout_wo_task_bdda     raw     CC    0.405     0.218 0.187  0.172  0.203             279       294
+               mlnet   scout_wo_task_bdda     raw    SIM    0.380     0.310 0.070  0.062  0.078             252       294
+               mlnet   scout_wo_task_bdda      cf     CC    0.134    -0.007 0.141  0.109  0.174             193       294
+               mlnet   scout_wo_task_bdda      cf    SIM    0.142     0.080 0.062  0.053  0.072             221       294
+               mlnet scout_wo_task_cocatt     raw     CC    0.359     0.234 0.125  0.112  0.138             245       294
+               mlnet scout_wo_task_cocatt     raw    SIM    0.521     0.469 0.052  0.045  0.059             235       294
+               mlnet scout_wo_task_cocatt      cf     CC    0.675     0.622 0.053  0.040  0.065             222       294
+               mlnet scout_wo_task_cocatt      cf    SIM    0.356     0.297 0.059  0.050  0.068             228       294
+               mlnet           salm2_bdda     raw     CC    0.413     0.224 0.188  0.173  0.203             282       294
+               mlnet           salm2_bdda     raw    SIM    0.414     0.344 0.070  0.063  0.077             255       294
+               mlnet           salm2_bdda      cf     CC    0.139    -0.007 0.146  0.112  0.181             187       294
+               mlnet           salm2_bdda      cf    SIM    0.153     0.086 0.067  0.057  0.077             225       294
+               mlnet         salm2_cocatt     raw     CC    0.212     0.178 0.034  0.019  0.050             164       294
+               mlnet         salm2_cocatt     raw    SIM    0.381     0.367 0.015  0.007  0.022             167       294
+               mlnet         salm2_cocatt      cf     CC    0.523     0.504 0.019  0.007  0.030             178       294
+               mlnet         salm2_cocatt      cf    SIM    0.224     0.209 0.014  0.008  0.021             168       294
+               u2net        dinov3_l_bdda     raw     CC    0.320     0.142 0.179  0.162  0.196             264       294
+               u2net        dinov3_l_bdda     raw    SIM    0.285     0.173 0.111  0.101  0.122             269       294
+               u2net        dinov3_l_bdda      cf     CC    0.272     0.014 0.258  0.234  0.283             263       294
+               u2net        dinov3_l_bdda      cf    SIM    0.220     0.080 0.140  0.127  0.153             269       294
+               u2net      dinov3_l_cocatt     raw     CC    0.257     0.131 0.126  0.108  0.143             230       294
+               u2net      dinov3_l_cocatt     raw    SIM    0.238     0.165 0.074  0.064  0.084             234       294
+               u2net      dinov3_l_cocatt      cf     CC    0.198     0.027 0.171  0.146  0.197             231       294
+               u2net      dinov3_l_cocatt      cf    SIM    0.173     0.083 0.090  0.078  0.102             236       294
+               u2net       vjepa21_l_bdda     raw     CC    0.302     0.132 0.169  0.152  0.187             260       294
+               u2net       vjepa21_l_bdda     raw    SIM    0.272     0.165 0.107  0.097  0.119             264       294
+               u2net       vjepa21_l_bdda      cf     CC    0.250     0.015 0.235  0.211  0.260             260       294
+               u2net       vjepa21_l_bdda      cf    SIM    0.206     0.079 0.127  0.114  0.140             258       294
+               u2net     vjepa21_l_cocatt     raw     CC    0.267     0.136 0.131  0.114  0.149             231       294
+               u2net     vjepa21_l_cocatt     raw    SIM    0.244     0.167 0.077  0.067  0.088             239       294
+               u2net     vjepa21_l_cocatt      cf     CC    0.208     0.025 0.183  0.157  0.209             236       294
+               u2net     vjepa21_l_cocatt      cf    SIM    0.183     0.084 0.099  0.087  0.112             237       294
+               u2net   scout_wo_task_bdda     raw     CC    0.296     0.147 0.149  0.134  0.165             261       294
+               u2net   scout_wo_task_bdda     raw    SIM    0.265     0.173 0.092  0.082  0.102             261       294
+               u2net   scout_wo_task_bdda      cf     CC    0.223    -0.001 0.224  0.199  0.249             257       294
+               u2net   scout_wo_task_bdda      cf    SIM    0.201     0.084 0.116  0.104  0.129             257       294
+               u2net scout_wo_task_cocatt     raw     CC    0.131     0.089 0.042  0.029  0.055             191       294
+               u2net scout_wo_task_cocatt     raw    SIM    0.177     0.159 0.018  0.012  0.025             184       294
+               u2net scout_wo_task_cocatt      cf     CC    0.260     0.222 0.037  0.028  0.048             198       294
+               u2net scout_wo_task_cocatt      cf    SIM    0.106     0.085 0.020  0.014  0.027             176       294
+               u2net           salm2_bdda     raw     CC    0.306     0.154 0.152  0.136  0.168             264       294
+               u2net           salm2_bdda     raw    SIM    0.274     0.182 0.092  0.082  0.102             269       294
+               u2net           salm2_bdda      cf     CC    0.243     0.002 0.241  0.215  0.267             253       294
+               u2net           salm2_bdda      cf    SIM    0.214     0.088 0.126  0.114  0.140             263       294
+               u2net         salm2_cocatt     raw     CC    0.095     0.065 0.030  0.018  0.041             175       294
+               u2net         salm2_cocatt     raw    SIM    0.153     0.137 0.016  0.010  0.023             172       294
+               u2net         salm2_cocatt      cf     CC    0.207     0.176 0.031  0.021  0.040             193       294
+               u2net         salm2_cocatt      cf    SIM    0.083     0.068 0.015  0.009  0.020             172       294
+       dinov3_l_bdda      dinov3_l_cocatt     raw     CC    0.779     0.377 0.402  0.383  0.420             290       294
+       dinov3_l_bdda      dinov3_l_cocatt     raw    SIM    0.656     0.397 0.259  0.247  0.271             289       294
+       dinov3_l_bdda      dinov3_l_cocatt      cf     CC    0.640     0.020 0.620  0.595  0.644             292       294
+       dinov3_l_bdda      dinov3_l_cocatt      cf    SIM    0.483     0.144 0.339  0.323  0.355             291       294
+       dinov3_l_bdda       vjepa21_l_bdda     raw     CC    0.901     0.383 0.518  0.503  0.533             294       294
+       dinov3_l_bdda       vjepa21_l_bdda     raw    SIM    0.777     0.403 0.374  0.365  0.384             294       294
+       dinov3_l_bdda       vjepa21_l_bdda      cf     CC    0.844     0.014 0.830  0.813  0.847             294       294
+       dinov3_l_bdda       vjepa21_l_bdda      cf    SIM    0.670     0.141 0.529  0.517  0.541             294       294
+       dinov3_l_bdda     vjepa21_l_cocatt     raw     CC    0.790     0.393 0.397  0.378  0.416             287       294
+       dinov3_l_bdda     vjepa21_l_cocatt     raw    SIM    0.673     0.410 0.263  0.251  0.275             291       294
+       dinov3_l_bdda     vjepa21_l_cocatt      cf     CC    0.651     0.020 0.631  0.606  0.656             293       294
+       dinov3_l_bdda     vjepa21_l_cocatt      cf    SIM    0.502     0.148 0.354  0.338  0.371             294       294
+       dinov3_l_bdda   scout_wo_task_bdda     raw     CC    0.828     0.425 0.403  0.387  0.420             294       294
+       dinov3_l_bdda   scout_wo_task_bdda     raw    SIM    0.703     0.425 0.279  0.268  0.289             294       294
+       dinov3_l_bdda   scout_wo_task_bdda      cf     CC    0.689     0.008 0.681  0.658  0.705             293       294
+       dinov3_l_bdda   scout_wo_task_bdda      cf    SIM    0.537     0.151 0.387  0.372  0.402             293       294
+       dinov3_l_bdda scout_wo_task_cocatt     raw     CC    0.342     0.251 0.091  0.070  0.112             205       294
+       dinov3_l_bdda scout_wo_task_cocatt     raw    SIM    0.399     0.352 0.047  0.037  0.057             208       294
+       dinov3_l_bdda scout_wo_task_cocatt      cf     CC    0.135     0.046 0.089  0.076  0.102             232       294
+       dinov3_l_bdda scout_wo_task_cocatt      cf    SIM    0.139     0.098 0.041  0.033  0.049             215       294
+       dinov3_l_bdda           salm2_bdda     raw     CC    0.863     0.447 0.416  0.399  0.432             294       294
+       dinov3_l_bdda           salm2_bdda     raw    SIM    0.738     0.453 0.285  0.275  0.296             294       294
+       dinov3_l_bdda           salm2_bdda      cf     CC    0.744     0.005 0.739  0.716  0.762             294       294
+       dinov3_l_bdda           salm2_bdda      cf    SIM    0.577     0.156 0.421  0.406  0.436             294       294
+       dinov3_l_bdda         salm2_cocatt     raw     CC    0.230     0.184 0.046  0.027  0.065             166       294
+       dinov3_l_bdda         salm2_cocatt     raw    SIM    0.317     0.296 0.021  0.010  0.032             166       294
+       dinov3_l_bdda         salm2_cocatt      cf     CC    0.086     0.027 0.059  0.046  0.074             207       294
+       dinov3_l_bdda         salm2_cocatt      cf    SIM    0.091     0.070 0.021  0.013  0.030             152       294
+     dinov3_l_cocatt       vjepa21_l_bdda     raw     CC    0.778     0.351 0.428  0.411  0.445             294       294
+     dinov3_l_cocatt       vjepa21_l_bdda     raw    SIM    0.644     0.370 0.274  0.263  0.285             293       294
+     dinov3_l_cocatt       vjepa21_l_bdda      cf     CC    0.651     0.018 0.633  0.609  0.657             293       294
+     dinov3_l_cocatt       vjepa21_l_bdda      cf    SIM    0.482     0.139 0.343  0.328  0.359             293       294
+     dinov3_l_cocatt     vjepa21_l_cocatt     raw     CC    0.806     0.364 0.442  0.426  0.459             294       294
+     dinov3_l_cocatt     vjepa21_l_cocatt     raw    SIM    0.679     0.383 0.296  0.286  0.307             294       294
+     dinov3_l_cocatt     vjepa21_l_cocatt      cf     CC    0.694     0.031 0.663  0.641  0.685             294       294
+     dinov3_l_cocatt     vjepa21_l_cocatt      cf    SIM    0.530     0.152 0.378  0.364  0.393             293       294
+     dinov3_l_cocatt   scout_wo_task_bdda     raw     CC    0.740     0.384 0.356  0.340  0.373             293       294
+     dinov3_l_cocatt   scout_wo_task_bdda     raw    SIM    0.623     0.391 0.232  0.222  0.243             294       294
+     dinov3_l_cocatt   scout_wo_task_bdda      cf     CC    0.568     0.003 0.564  0.538  0.590             290       294
+     dinov3_l_cocatt   scout_wo_task_bdda      cf    SIM    0.441     0.146 0.295  0.280  0.310             291       294
+     dinov3_l_cocatt scout_wo_task_cocatt     raw     CC    0.346     0.234 0.112  0.092  0.132             216       294
+     dinov3_l_cocatt scout_wo_task_cocatt     raw    SIM    0.384     0.323 0.061  0.051  0.071             221       294
+     dinov3_l_cocatt scout_wo_task_cocatt      cf     CC    0.174     0.071 0.103  0.090  0.117             233       294
+     dinov3_l_cocatt scout_wo_task_cocatt      cf    SIM    0.162     0.106 0.056  0.048  0.065             230       294
+     dinov3_l_cocatt           salm2_bdda     raw     CC    0.760     0.404 0.356  0.339  0.373             290       294
+     dinov3_l_cocatt           salm2_bdda     raw    SIM    0.641     0.414 0.228  0.217  0.238             293       294
+     dinov3_l_cocatt           salm2_bdda      cf     CC    0.602     0.003 0.599  0.570  0.627             289       294
+     dinov3_l_cocatt           salm2_bdda      cf    SIM    0.461     0.151 0.310  0.294  0.326             292       294
+     dinov3_l_cocatt         salm2_cocatt     raw     CC    0.221     0.161 0.059  0.042  0.077             183       294
+     dinov3_l_cocatt         salm2_cocatt     raw    SIM    0.302     0.269 0.034  0.023  0.044             178       294
+     dinov3_l_cocatt         salm2_cocatt      cf     CC    0.108     0.041 0.067  0.054  0.081             215       294
+     dinov3_l_cocatt         salm2_cocatt      cf    SIM    0.108     0.075 0.032  0.025  0.040             191       294
+      vjepa21_l_bdda     vjepa21_l_cocatt     raw     CC    0.841     0.369 0.471  0.454  0.489             292       294
+      vjepa21_l_bdda     vjepa21_l_cocatt     raw    SIM    0.713     0.386 0.327  0.316  0.338             294       294
+      vjepa21_l_bdda     vjepa21_l_cocatt      cf     CC    0.738     0.028 0.710  0.689  0.731             293       294
+      vjepa21_l_bdda     vjepa21_l_cocatt      cf    SIM    0.569     0.148 0.421  0.407  0.436             294       294
+      vjepa21_l_bdda   scout_wo_task_bdda     raw     CC    0.849     0.398 0.451  0.435  0.467             294       294
+      vjepa21_l_bdda   scout_wo_task_bdda     raw    SIM    0.724     0.400 0.324  0.314  0.335             294       294
+      vjepa21_l_bdda   scout_wo_task_bdda      cf     CC    0.743     0.014 0.729  0.708  0.749             294       294
+      vjepa21_l_bdda   scout_wo_task_bdda      cf    SIM    0.581     0.151 0.431  0.417  0.444             294       294
+      vjepa21_l_bdda scout_wo_task_cocatt     raw     CC    0.313     0.222 0.090  0.070  0.110             199       294
+      vjepa21_l_bdda scout_wo_task_cocatt     raw    SIM    0.362     0.316 0.046  0.037  0.056             207       294
+      vjepa21_l_bdda scout_wo_task_cocatt      cf     CC    0.117     0.033 0.084  0.071  0.097             221       294
+      vjepa21_l_bdda scout_wo_task_cocatt      cf    SIM    0.123     0.085 0.039  0.031  0.047             199       294
+      vjepa21_l_bdda           salm2_bdda     raw     CC    0.848     0.418 0.430  0.413  0.447             294       294
+      vjepa21_l_bdda           salm2_bdda     raw    SIM    0.720     0.424 0.296  0.285  0.307             294       294
+      vjepa21_l_bdda           salm2_bdda      cf     CC    0.748     0.013 0.735  0.713  0.758             294       294
+      vjepa21_l_bdda           salm2_bdda      cf    SIM    0.575     0.155 0.420  0.404  0.435             294       294
+      vjepa21_l_bdda         salm2_cocatt     raw     CC    0.199     0.159 0.040  0.023  0.058             161       294
+      vjepa21_l_bdda         salm2_cocatt     raw    SIM    0.281     0.264 0.017  0.006  0.027             156       294
+      vjepa21_l_bdda         salm2_cocatt      cf     CC    0.064     0.013 0.052  0.039  0.065             198       294
+      vjepa21_l_bdda         salm2_cocatt      cf    SIM    0.075     0.059 0.015  0.008  0.023             146       294
+    vjepa21_l_cocatt   scout_wo_task_bdda     raw     CC    0.798     0.403 0.395  0.379  0.411             294       294
+    vjepa21_l_cocatt   scout_wo_task_bdda     raw    SIM    0.676     0.405 0.271  0.260  0.281             294       294
+    vjepa21_l_cocatt   scout_wo_task_bdda      cf     CC    0.641     0.007 0.634  0.610  0.659             291       294
+    vjepa21_l_cocatt   scout_wo_task_bdda      cf    SIM    0.510     0.152 0.358  0.343  0.372             293       294
+    vjepa21_l_cocatt scout_wo_task_cocatt     raw     CC    0.331     0.231 0.100  0.079  0.121             210       294
+    vjepa21_l_cocatt scout_wo_task_cocatt     raw    SIM    0.374     0.323 0.050  0.040  0.061             208       294
+    vjepa21_l_cocatt scout_wo_task_cocatt      cf     CC    0.149     0.054 0.095  0.082  0.109             227       294
+    vjepa21_l_cocatt scout_wo_task_cocatt      cf    SIM    0.134     0.091 0.043  0.035  0.052             197       294
+    vjepa21_l_cocatt           salm2_bdda     raw     CC    0.792     0.425 0.368  0.351  0.385             293       294
+    vjepa21_l_cocatt           salm2_bdda     raw    SIM    0.673     0.431 0.242  0.231  0.254             293       294
+    vjepa21_l_cocatt           salm2_bdda      cf     CC    0.635     0.007 0.628  0.601  0.656             292       294
+    vjepa21_l_cocatt           salm2_bdda      cf    SIM    0.493     0.157 0.336  0.320  0.352             294       294
+    vjepa21_l_cocatt         salm2_cocatt     raw     CC    0.206     0.161 0.045  0.027  0.063             163       294
+    vjepa21_l_cocatt         salm2_cocatt     raw    SIM    0.288     0.267 0.020  0.010  0.031             161       294
+    vjepa21_l_cocatt         salm2_cocatt      cf     CC    0.084     0.028 0.056  0.043  0.069             206       294
+    vjepa21_l_cocatt         salm2_cocatt      cf    SIM    0.080     0.062 0.018  0.011  0.026             159       294
+  scout_wo_task_bdda scout_wo_task_cocatt     raw     CC    0.342     0.244 0.098  0.077  0.118             201       294
+  scout_wo_task_bdda scout_wo_task_cocatt     raw    SIM    0.380     0.328 0.052  0.042  0.062             206       294
+  scout_wo_task_bdda scout_wo_task_cocatt      cf     CC    0.095    -0.003 0.098  0.084  0.111             234       294
+  scout_wo_task_bdda scout_wo_task_cocatt      cf    SIM    0.138     0.089 0.049  0.041  0.057             215       294
+  scout_wo_task_bdda           salm2_bdda     raw     CC    0.867     0.465 0.402  0.386  0.418             293       294
+  scout_wo_task_bdda           salm2_bdda     raw    SIM    0.736     0.450 0.286  0.275  0.297             294       294
+  scout_wo_task_bdda           salm2_bdda      cf     CC    0.735     0.007 0.728  0.705  0.750             294       294
+  scout_wo_task_bdda           salm2_bdda      cf    SIM    0.577     0.167 0.410  0.395  0.424             294       294
+  scout_wo_task_bdda         salm2_cocatt     raw     CC    0.218     0.179 0.039  0.020  0.058             158       294
+  scout_wo_task_bdda         salm2_cocatt     raw    SIM    0.291     0.276 0.015  0.005  0.026             158       294
+  scout_wo_task_bdda         salm2_cocatt      cf     CC    0.038    -0.013 0.051  0.038  0.064             202       294
+  scout_wo_task_bdda         salm2_cocatt      cf    SIM    0.078     0.063 0.015  0.008  0.023             147       294
+scout_wo_task_cocatt           salm2_bdda     raw     CC    0.349     0.250 0.099  0.084  0.115             236       294
+scout_wo_task_cocatt           salm2_bdda     raw    SIM    0.407     0.355 0.052  0.044  0.061             219       294
+scout_wo_task_cocatt           salm2_bdda      cf     CC    0.096    -0.007 0.104  0.068  0.139             175       294
+scout_wo_task_cocatt           salm2_bdda      cf    SIM    0.142     0.091 0.052  0.040  0.064             186       294
+scout_wo_task_cocatt         salm2_cocatt     raw     CC    0.292     0.192 0.099  0.082  0.117             225       294
+scout_wo_task_cocatt         salm2_cocatt     raw    SIM    0.413     0.359 0.054  0.044  0.063             225       294
+scout_wo_task_cocatt         salm2_cocatt      cf     CC    0.519     0.451 0.068  0.057  0.079             223       294
+scout_wo_task_cocatt         salm2_cocatt      cf    SIM    0.257     0.192 0.064  0.056  0.073             232       294
+          salm2_bdda         salm2_cocatt     raw     CC    0.228     0.187 0.041  0.022  0.061             155       294
+          salm2_bdda         salm2_cocatt     raw    SIM    0.316     0.297 0.019  0.007  0.031             153       294
+          salm2_bdda         salm2_cocatt      cf     CC    0.046    -0.017 0.063  0.047  0.078             197       294
+          salm2_bdda         salm2_cocatt      cf    SIM    0.085     0.063 0.022  0.014  0.031             152       294

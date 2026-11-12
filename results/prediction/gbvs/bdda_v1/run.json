@@ -1,0 +1,70 @@
+{
+  "model": "GBVS (Python port, Harel/Koch/Perona 2006)",
+  "port": {
+    "repo": "https://github.com/shreelock/gbvs",
+    "expected_commit": "4c7e3c58e786d053ec4ae6fb9d03bdfeea2c539a",
+    "found_commit": "4c7e3c58e786d053ec4ae6fb9d03bdfeea2c539a",
+    "graph_mat": "$BASELINES/gbvs/saliency_models/resources/28__32__m__2.mat",
+    "graph_mat_sha256": "71d60d183c330c89da2fd36263f5b0df2c2003b61e7cefc4e92132624ac3c2be"
+  },
+  "code_sha256": {
+    "gbvs_fast.py": "2bab4792c1eeede799ab45503612a24e41c4f876ebdea969205c80be598cfb62",
+    "predict_gbvs.py": "10c458ca1a26617107a2d4e38b474111bd69383734289e6476008d95b0769a41"
+  },
+  "args": {
+    "manifest": "./meta/splits/test_common.csv",
+    "root": "$DATASETS/BDDA",
+    "out": "$RESULTS/gbvs/bdda_v1",
+    "workers": 19,
+    "port_dir": "$BASELINES/gbvs",
+    "limit_videos": 0,
+    "resume": false
+  },
+  "manifest_sha256": "2337357d905e2687c4943f3bd9a8c80f34bd4b489c864493d6f566f2f57b8193",
+  "videos_total": 294,
+  "videos_todo": 294,
+  "frames_todo": 84831,
+  "output": {
+    "key": "sal",
+    "shape_per_frame": [
+      28,
+      32
+    ],
+    "note": "port's min-max normalised master map before its final cubic upsampling; ~1e-10 round-off negatives clipped to 0"
+  },
+  "input": "native frame, BGR uint8 via cv2.imread, no resizing (port defaults, untuned)",
+  "params": {
+    "sigma_frac_act": 0.15,
+    "sigma_frac_norm": 0.06,
+    "max_level": 4,
+    "thetas": [
+      0,
+      45,
+      90,
+      135
+    ],
+    "gaborparams": {
+      "stddev": 2,
+      "elongation": 2,
+      "filterSize": -1,
+      "filterPeriod": 3.141592653589793
+    }
+  },
+  "env": {
+    "cpu": "Intel(R) Xeon(R) Gold 6146 CPU @ 3.20GHz",
+    "cpu_count": 20,
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "opencv": "5.0.0"
+  },
+  "frame_sizes_seen": [
+    "1280x720"
+  ],
+  "timing": {
+    "wall_s": 7163.1,
+    "frames_per_s": 11.843,
+    "s_per_frame_per_worker": 1.6043,
+    "est_hours_for_84831_frames_at_these_workers": 1.99
+  }
+}

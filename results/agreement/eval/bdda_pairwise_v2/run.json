@@ -1,0 +1,152 @@
+{
+  "args": {
+    "manifest": "meta/splits/bdda_test_scored.csv",
+    "root": "$DATASETS/BDDA",
+    "model": [
+      "center_bdda=$RESULTS/baselines/bdda_center_bias_72x128.npy",
+      "center_cocatt=$RESULTS/baselines/cocatt_center_bias_64x128.npy",
+      "gbvs=$RESULTS/gbvs/bdda_v1/pred_test_common",
+      "mlnet=$RESULTS/mlnet/bdda_v1/pred_test_common",
+      "u2net=$RESULTS/u2net/bdda_v1/pred_test_common",
+      "dinov3_l_bdda=$RESULTS/dinov3/bdda_vitl16_light_s10/pred_test_common",
+      "dinov3_l_cocatt=$RESULTS/dinov3/cocatt_vitl16_light_s2_on_bdda/pred_bdda_test_scored",
+      "vjepa21_l_bdda=$RESULTS/vjepa21/bdda_vitl16_light_s10_c8s7/pred_test_common",
+      "vjepa21_l_cocatt=$RESULTS/vjepa21/cocatt_vitl16_light_s2_c8s1_on_bdda/pred_bdda_test_scored",
+      "scout_wo_task_bdda=$RESULTS/scout/bdda_wo_task_20261028/pred_bdda_test_scored",
+      "scout_wo_task_cocatt=$RESULTS/scout/cocatt_wo_task_20261027/pred_bdda_test_scored",
+      "salm2_bdda=$RESULTS/salm2/bdda_20261028/pred_bdda_test_scored",
+      "salm2_cocatt=$RESULTS/salm2/cocatt_20261027/pred_bdda_test_scored"
+    ],
+    "center": "center_bdda",
+    "size": [
+      72,
+      128
+    ],
+    "out": "$RESULTS/eval/bdda_pairwise_v2",
+    "gpu": 1,
+    "workers": 6,
+    "chunk": 512,
+    "n_boot": 10000,
+    "seed": 0,
+    "limit_videos": 0
+  },
+  "started": "2026-10-29T13:24:26",
+  "seconds": 852.7,
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.7.1+cu126",
+    "numpy": "2.5.2",
+    "pandas": "2.3.3"
+  },
+  "device": "cuda:1",
+  "manifest_sha256": "c421292f12ee97a2d2e70b821a99904741d9a90b5c79795a29cfec72bf8e0687",
+  "code_sha256": {
+    "pairwise_agreement.py": "554dad860d5f46a15ecd4abd185f85affe3e813dc1d73a84a983729508a7aec3",
+    "gazemetrics.py": "ff302eb27d980827b995e5f327cd349baaf75cc90adb15214fe8ccb03b623fa9"
+  },
+  "n_videos": 294,
+  "n_frames": 84536,
+  "working_grid": [
+    72,
+    128
+  ],
+  "preprocessing": "resize_to (bilinear, antialias=True) to working grid; clamp >=0; sum-normalise per frame; GT via gt_from_uint8 then same",
+  "metrics": {
+    "CC_raw": "gazemetrics.cc(a, b) (Pearson; symmetric)",
+    "SIM_raw": "sum(min(a, b)) with both sum-normalised (standard symmetric SIM; not gazemetrics.sim)",
+    "CC_cf": "gazemetrics.cc(a - center, b - center), center = sum-normalised --center map",
+    "SIM_cf": "sum(min(a+, b+)) with a+ = max(a - center, 0) renormalised; NaN if either has no positive mass"
+  },
+  "center": "center_bdda",
+  "aggregation": "frame -> mean per video -> mean over videos; NaN skipped",
+  "bootstrap": {
+    "unit": "video",
+    "n_boot": 10000,
+    "seed": 0,
+    "ci": "percentile 95%"
+  },
+  "nan_counts": {
+    "cf|CC": 1098968,
+    "cf|SIM": 1098968,
+    "raw|CC": 0,
+    "raw|SIM": 0
+  },
+  "sources": {
+    "center_bdda": {
+      "kind": "const",
+      "source": "$RESULTS/baselines/bdda_center_bias_72x128.npy",
+      "sha256": "605d54b0ab3ae005bfb7eb0aff5b7330dc9b2782bddf8bdbfa8981224eb114d4"
+    },
+    "center_cocatt": {
+      "kind": "const",
+      "source": "$RESULTS/baselines/cocatt_center_bias_64x128.npy",
+      "sha256": "ef6caca05c3aec80f8eab3e2f6cd38a19b5740258dc5c1c89c6dad85acfae933"
+    },
+    "gbvs": {
+      "kind": "dir",
+      "source": "$RESULTS/gbvs/bdda_v1/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "7b9a5f8452ab00253bed242b51649ec75d4dea534cd8f6aad00042aa120f61f2"
+    },
+    "mlnet": {
+      "kind": "dir",
+      "source": "$RESULTS/mlnet/bdda_v1/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "3dc060928911322d32acb8d5d1607dbd75778c6f940b50e6df507fcdbaa7d256"
+    },
+    "u2net": {
+      "kind": "dir",
+      "source": "$RESULTS/u2net/bdda_v1/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "069bc0780d679e4cb728f22dc532912d170f733f43130ff8d30654cc881827b6"
+    },
+    "dinov3_l_bdda": {
+      "kind": "dir",
+      "source": "$RESULTS/dinov3/bdda_vitl16_light_s10/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "9fb7a1f69db63cff39741553fac53f1e588a9fd57b76249eedd48caef590d678"
+    },
+    "dinov3_l_cocatt": {
+      "kind": "dir",
+      "source": "$RESULTS/dinov3/cocatt_vitl16_light_s2_on_bdda/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "04976b8b4ced7cde70333943dca1e13ebd80b7bf8bc73c90f7b657857aa70852"
+    },
+    "vjepa21_l_bdda": {
+      "kind": "dir",
+      "source": "$RESULTS/vjepa21/bdda_vitl16_light_s10_c8s7/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "5f86d5d5647f303edad592a47c8305ed5c4841b7dd56ac44f8d1677293e762f5"
+    },
+    "vjepa21_l_cocatt": {
+      "kind": "dir",
+      "source": "$RESULTS/vjepa21/cocatt_vitl16_light_s2_c8s1_on_bdda/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "78ae072ff8a08b75ce18396088a83e668a5b3d137976d9dbc3298cccc66d5baa"
+    },
+    "scout_wo_task_bdda": {
+      "kind": "dir",
+      "source": "$RESULTS/scout/bdda_wo_task_20261028/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "aa67e3798f4acd771fbf366e75b0f7a1efb5782b79ec3c8a521f7e556eec2678"
+    },
+    "scout_wo_task_cocatt": {
+      "kind": "dir",
+      "source": "$RESULTS/scout/cocatt_wo_task_20261027/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "abf7fc276ac1bc35e86155f40662a506e20d108cf7a179706b50a2b9bbf8975b"
+    },
+    "salm2_bdda": {
+      "kind": "dir",
+      "source": "$RESULTS/salm2/bdda_20261028/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "7d555db093514b9869048cee440ff3fd9b5618424cb89c5eb08ef35a114c7257"
+    },
+    "salm2_cocatt": {
+      "kind": "dir",
+      "source": "$RESULTS/salm2/cocatt_20261027/pred_bdda_test_scored",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "ce9e1122bbbed7861b3e89f04bd6c8ed87a715601537e3bb7174c1b4c1f521b6"
+    }
+  }
+}

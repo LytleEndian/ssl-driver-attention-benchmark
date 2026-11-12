@@ -1,0 +1,107 @@
+{
+  "args": {
+    "hub": "dinov3_vitb16",
+    "weights": "$MODELS/vjepa2/vjepa2_1_vitl_dist_vitG_384.pt",
+    "repo": "$BASELINES/dinov3",
+    "root": "$DATASETS/CoCAtt",
+    "splits": "meta/splits",
+    "train_manifest": "cocatt_train",
+    "val_manifest": "cocatt_val",
+    "test_manifests": "cocatt_test",
+    "out": "$RESULTS/vjepa21/cocatt_vitl16_light_s2_c8s1",
+    "input": [
+      256,
+      512
+    ],
+    "target": [
+      64,
+      128
+    ],
+    "pred_size": [
+      64,
+      128
+    ],
+    "width": 128,
+    "epochs": 30,
+    "bs": 32,
+    "lr": 0.001,
+    "wd": 0.0001,
+    "warmup": 500,
+    "stride": 2,
+    "val_stride": 2,
+    "workers": 5,
+    "gpu": 0,
+    "seed": 0,
+    "max_steps": 0,
+    "log_every": 100,
+    "no_predict": false,
+    "predict_only": false,
+    "ckpt": null,
+    "cache": "/srv/cache/cocatt_256x512_all",
+    "backbone": "vjepa21",
+    "vjepa_arch": "vit_large",
+    "feat_norm": "none",
+    "clip_frames": 8,
+    "clip_step": 1,
+    "train_features": "/srv/cache/vjepa21L_cocatt_c8s1/train_s2",
+    "val_features": "/srv/cache/vjepa21L_cocatt_c8s1/val_s2"
+  },
+  "torch": "2.7.1+cu126",
+  "cuda": "12.6",
+  "gpu": "Tesla PG500-216",
+  "weights_sha256": "7ea9b7cb4a75d10644a8a8d42cff9e177b10dca8f02173f0eaf2b0bed82838c6",
+  "dinov3_commit": "6876159a11b4df116f30f667f8c9888617df0751",
+  "code_sha256": {
+    "gazehead.py": "6158d66ab42435b2d5aef83fdf0c79ec643735008d8cfb95b9b596c6a0154c86",
+    "data.py": "19927c3e3bdb9e77931f9db22bae6bf9ad84cccbdd796814bc1920430be8d0c9",
+    "train_gaze.py": "3844aa79e3ba4424d156997e1b071d40db9e2933401ee1f6eaf917bd863b66b0"
+  },
+  "vjepa2_commit": "204698b45b3712590f06245fbfba32d3be539812",
+  "vjepa_code_sha256": {
+    "vjepa_backbone.py": "de407400db3a20314a8127f9fcb6d18fa8f690c403275d7ed2bd6f7a3fcbecde",
+    "clipdata.py": "a8fd356e4f971116c6b66569453a9729425756fca3d9f4dd92cf9f8152854db6"
+  },
+  "backbone_keys": {
+    "missing": [],
+    "unexpected": []
+  },
+  "features": {
+    "train": "/srv/cache/vjepa21L_cocatt_c8s1/train_s2",
+    "val": "/srv/cache/vjepa21L_cocatt_c8s1/val_s2"
+  },
+  "manifests": {
+    "cocatt_train": "b11ddd0b78ebd324e4d994f85fb968bcbd2f295db603e10c85c1eb51a48297fb",
+    "cocatt_val": "bfd800a157b16b4aad1ad73f99afc511fa20a4eea80887a48ec58cec0b15ffc1",
+    "cocatt_test": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251"
+  },
+  "cache": {
+    "dir": "/srv/cache/cocatt_256x512_all",
+    "n": 95606,
+    "frames_shape": [
+      95606,
+      3,
+      256,
+      512
+    ],
+    "gt_shape": [
+      95606,
+      64,
+      128
+    ],
+    "dtype": "uint8",
+    "frame_transform": "PIL RGB -> v2.ToImage -> v2.Resize((256, 512), antialias=True)",
+    "gt_transform": "PIL L -> resize((128,64), BILINEAR)",
+    "manifests": {
+      "cocatt_allframes": "5600cb1f6b949586cb7fefe08f3021a1fc86da4cf9f6116fb6ae611ec10e88ab"
+    },
+    "torch": "2.7.1+cu126",
+    "torchvision": "0.22.1+cu126",
+    "build_seconds": 180
+  },
+  "decoder_params": {
+    "bn": 8192,
+    "adapter": 524416,
+    "body": 92289,
+    "total": 624897
+  }
+}

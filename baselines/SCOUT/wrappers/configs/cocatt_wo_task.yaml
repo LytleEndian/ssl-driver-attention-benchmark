@@ -1,0 +1,56 @@
+# SCOUT without task/map inputs (frames only) on CoCAtt.
+# Intended path: /opt/SCOUT/configs/cocatt_wo_task.yaml
+# Cloned from configs/SCOUT.yaml; changes: dataset, use_task False, no_epochs 20 (paper value;
+# the shipped yaml says 10 — early stopping with patience 2 decides in practice).
+model_class: SCOUT_task
+
+dataset: CoCAtt
+
+last_weights: None
+
+best_weights: None
+
+model_params:
+  img_size: [224,224]
+  use_task: False              # frames only
+  task_attributes: ['current_action', 'local_context']   # unused when use_task is False
+
+  transformer_params:
+    add_and_norm: True
+    fuse_idx: [1, 2]
+    num_att_heads: [2, 2, 2]
+
+  pretrained_backbone: True    # Swin-S, Kinetics-400
+  train_backbone: True
+  num_encoder_layers: 4
+  clip_size: 16                # 4.0 s at CoCAtt's 4 fps (BDD-A: ~0.5 s); native SCOUT input kept
+
+train_params:
+  no_epochs: 20
+  lr: 0.0001
+  loss:
+    kldiv: True
+    kldiv_coeff: 1.0
+    cc: False
+    cc_coeff: -1.0
+    nss: False
+    nss_coeff: 1.0
+    sim: False
+    sim_coeff: -1.0
+    l1: False
+    l1_coeff: 1.0
+  lr_sched: True
+  early_stop: True
+  optimizer: Adam
+  batch_size: 4
+  log_interval: 10
+  no_workers: 6
+  weighted_sampler: False
+  weighted_loss: False
+  weight_type: KLdiv
+
+test_params:
+  batch_size: 4
+  eval: null                   # predictions are made by /opt/gazehead/tools/predict_scout_cocatt.py
+  metrics: [KLdiv, NSS, SIM, CC]
+  save_images: False

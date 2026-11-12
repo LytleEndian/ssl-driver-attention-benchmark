@@ -1,0 +1,134 @@
+== cocatt -> bdda  (294 target videos) ==
+        model metric  in_domain  transferred  degradation  ci_lo  ci_hi  rel_pct  videos_worse
+       center    KLD      1.541        1.825        0.284  0.233  0.334   18.403           195
+       center     CC      0.440        0.360        0.080  0.065  0.095   18.198           207
+       center    SIM      0.328        0.312        0.016  0.008  0.024    4.908           161
+       center    NSS      2.105        1.721        0.384  0.309  0.456   18.226           203
+     dinov3_l    KLD      0.916        1.231        0.315  0.289  0.342   34.430           283
+     dinov3_l     CC      0.678        0.574        0.104  0.095  0.114   15.397           272
+     dinov3_l    SIM      0.505        0.441        0.064  0.058  0.071   12.692           255
+     dinov3_l    NSS      3.298        2.803        0.495  0.450  0.542   15.013           273
+        salm2    KLD      1.062        2.607        1.545  1.476  1.614  145.524           293
+        salm2     CC      0.627        0.151        0.476  0.458  0.494   75.925           292
+        salm2    SIM      0.468        0.169        0.298  0.286  0.309   63.764           292
+        salm2    NSS      3.052        0.723        2.328  2.225  2.432   76.294           293
+scout_wo_task    KLD      1.028        2.169        1.142  1.086  1.197  111.094           294
+scout_wo_task     CC      0.629        0.230        0.400  0.381  0.418   63.495           294
+scout_wo_task    SIM      0.481        0.208        0.274  0.263  0.284   56.869           294
+scout_wo_task    NSS      3.060        1.092        1.969  1.865  2.074   64.330           294
+    vjepa21_l    KLD      0.814        1.080        0.266  0.248  0.284   32.616           289
+    vjepa21_l     CC      0.709        0.612        0.097  0.090  0.104   13.657           288
+    vjepa21_l    SIM      0.540        0.470        0.070  0.065  0.075   12.961           285
+    vjepa21_l    NSS      3.443        2.984        0.459  0.426  0.493   13.335           288
+
+paired differences in degradation (diff>0: A degrades more):
+      model_a       model_b metric   diff  ci_lo  ci_hi  ci_excludes_0  videos_a_degrades_less
+       center      dinov3_l    KLD -0.032 -0.090  0.026          False                     174
+       center      dinov3_l     CC -0.024 -0.042 -0.007           True                     160
+       center      dinov3_l    SIM -0.048 -0.059 -0.037           True                     202
+       center      dinov3_l    NSS -0.112 -0.199 -0.025           True                     161
+       center         salm2    KLD -1.262 -1.329 -1.196           True                     291
+       center         salm2     CC -0.396 -0.414 -0.378           True                     292
+       center         salm2    SIM -0.282 -0.294 -0.270           True                     292
+       center         salm2    NSS -1.945 -2.046 -1.844           True                     292
+       center scout_wo_task    KLD -0.858 -0.927 -0.788           True                     273
+       center scout_wo_task     CC -0.320 -0.341 -0.298           True                     285
+       center scout_wo_task    SIM -0.258 -0.271 -0.245           True                     292
+       center scout_wo_task    NSS -1.585 -1.700 -1.471           True                     286
+       center     vjepa21_l    KLD  0.018 -0.038  0.073          False                     173
+       center     vjepa21_l     CC -0.017 -0.033 -0.000           True                     163
+       center     vjepa21_l    SIM -0.054 -0.064 -0.044           True                     200
+       center     vjepa21_l    NSS -0.076 -0.158  0.007          False                     164
+     dinov3_l         salm2    KLD -1.230 -1.305 -1.154           True                     283
+     dinov3_l         salm2     CC -0.372 -0.392 -0.351           True                     284
+     dinov3_l         salm2    SIM -0.234 -0.246 -0.222           True                     287
+     dinov3_l         salm2    NSS -1.833 -1.943 -1.721           True                     285
+     dinov3_l scout_wo_task    KLD -0.826 -0.889 -0.764           True                     279
+     dinov3_l scout_wo_task     CC -0.295 -0.316 -0.275           True                     282
+     dinov3_l scout_wo_task    SIM -0.210 -0.221 -0.198           True                     288
+     dinov3_l scout_wo_task    NSS -1.473 -1.586 -1.363           True                     282
+     dinov3_l     vjepa21_l    KLD  0.050  0.026  0.073           True                     126
+     dinov3_l     vjepa21_l     CC  0.008 -0.002  0.017          False                     139
+     dinov3_l     vjepa21_l    SIM -0.006 -0.013  0.001          False                     156
+     dinov3_l     vjepa21_l    NSS  0.036 -0.010  0.082          False                     142
+        salm2 scout_wo_task    KLD  0.404  0.334  0.473           True                      72
+        salm2 scout_wo_task     CC  0.076  0.059  0.094           True                      88
+        salm2 scout_wo_task    SIM  0.024  0.015  0.034           True                     115
+        salm2 scout_wo_task    NSS  0.360  0.274  0.445           True                      87
+        salm2     vjepa21_l    KLD  1.280  1.207  1.353           True                       6
+        salm2     vjepa21_l     CC  0.379  0.359  0.400           True                       7
+        salm2     vjepa21_l    SIM  0.228  0.216  0.240           True                       9
+        salm2     vjepa21_l    NSS  1.869  1.758  1.981           True                       7
+scout_wo_task     vjepa21_l    KLD  0.876  0.816  0.936           True                       8
+scout_wo_task     vjepa21_l     CC  0.303  0.283  0.323           True                      14
+scout_wo_task     vjepa21_l    SIM  0.204  0.193  0.215           True                       4
+scout_wo_task     vjepa21_l    NSS  1.509  1.400  1.622           True                      11
+
+== bdda -> cocatt  (7 target videos) ==
+NOTE: only 7 videos; treat bootstrap CIs as descriptive, not inferential.
+        model metric  in_domain  transferred  degradation  ci_lo  ci_hi  rel_pct  videos_worse
+       center    KLD      1.873        2.168        0.295  0.264  0.324   15.770             7
+       center     CC      0.492        0.407        0.085  0.078  0.093   17.336             7
+       center    SIM      0.273        0.193        0.080  0.076  0.085   29.417             7
+       center    NSS      3.452        2.850        0.602  0.552  0.656   17.434             7
+     dinov3_l    KLD      1.536        1.879        0.343  0.200  0.465   22.352             7
+     dinov3_l     CC      0.563        0.501        0.063  0.038  0.085   11.177             7
+     dinov3_l    SIM      0.400        0.249        0.150  0.117  0.180   37.622             7
+     dinov3_l    NSS      3.955        3.510        0.445  0.270  0.602   11.260             7
+        salm2    KLD      1.534        1.891        0.357  0.262  0.442   23.266             7
+        salm2     CC      0.562        0.494        0.068  0.049  0.085   12.076             7
+        salm2    SIM      0.380        0.267        0.114  0.095  0.130   29.890             7
+        salm2    NSS      3.943        3.466        0.477  0.341  0.596   12.094             7
+scout_wo_task    KLD      1.499        2.115        0.616  0.482  0.741   41.116             7
+scout_wo_task     CC      0.569        0.432        0.137  0.104  0.171   24.136             7
+scout_wo_task    SIM      0.383        0.240        0.143  0.118  0.170   37.301             7
+scout_wo_task    NSS      3.992        3.026        0.966  0.728  1.210   24.199             7
+    vjepa21_l    KLD      1.455        1.715        0.260  0.171  0.347   17.862             7
+    vjepa21_l     CC      0.583        0.536        0.047  0.025  0.068    8.037             7
+    vjepa21_l    SIM      0.405        0.316        0.089  0.068  0.109   21.980             7
+    vjepa21_l    NSS      4.090        3.760        0.329  0.172  0.481    8.055             7
+
+paired differences in degradation (diff>0: A degrades more):
+      model_a       model_b metric   diff  ci_lo  ci_hi  ci_excludes_0  videos_a_degrades_less
+       center      dinov3_l    KLD -0.048 -0.153  0.072          False                       4
+       center      dinov3_l     CC  0.022  0.003  0.044           True                       2
+       center      dinov3_l    SIM -0.070 -0.094 -0.040           True                       7
+       center      dinov3_l    NSS  0.156  0.022  0.311           True                       2
+       center         salm2    KLD -0.062 -0.127  0.014          False                       4
+       center         salm2     CC  0.017  0.004  0.032           True                       1
+       center         salm2    SIM -0.033 -0.046 -0.019           True                       6
+       center         salm2    NSS  0.125  0.033  0.223           True                       1
+       center scout_wo_task    KLD -0.321 -0.427 -0.201           True                       7
+       center scout_wo_task     CC -0.052 -0.080 -0.023           True                       6
+       center scout_wo_task    SIM -0.063 -0.086 -0.042           True                       7
+       center scout_wo_task    NSS -0.364 -0.564 -0.160           True                       6
+       center     vjepa21_l    KLD  0.035 -0.033  0.111          False                       3
+       center     vjepa21_l     CC  0.038  0.023  0.057           True                       0
+       center     vjepa21_l    SIM -0.009 -0.025  0.008          False                       4
+       center     vjepa21_l    NSS  0.272  0.164  0.396           True                       0
+     dinov3_l         salm2    KLD -0.014 -0.073  0.036          False                       2
+     dinov3_l         salm2     CC -0.005 -0.019  0.008          False                       3
+     dinov3_l         salm2    SIM  0.037  0.021  0.052           True                       0
+     dinov3_l         salm2    NSS -0.031 -0.128  0.059          False                       3
+     dinov3_l scout_wo_task    KLD -0.273 -0.311 -0.237           True                       7
+     dinov3_l scout_wo_task     CC -0.074 -0.093 -0.059           True                       7
+     dinov3_l scout_wo_task    SIM  0.008 -0.006  0.021          False                       3
+     dinov3_l scout_wo_task    NSS -0.521 -0.655 -0.409           True                       7
+     dinov3_l     vjepa21_l    KLD  0.083  0.029  0.136           True                       2
+     dinov3_l     vjepa21_l     CC  0.016  0.008  0.024           True                       1
+     dinov3_l     vjepa21_l    SIM  0.062  0.050  0.073           True                       0
+     dinov3_l     vjepa21_l    NSS  0.116  0.056  0.172           True                       1
+        salm2 scout_wo_task    KLD -0.259 -0.324 -0.192           True                       7
+        salm2 scout_wo_task     CC -0.069 -0.090 -0.049           True                       7
+        salm2 scout_wo_task    SIM -0.029 -0.043 -0.019           True                       7
+        salm2 scout_wo_task    NSS -0.489 -0.638 -0.345           True                       7
+        salm2     vjepa21_l    KLD  0.097  0.055  0.130           True                       1
+        salm2     vjepa21_l     CC  0.021  0.012  0.031           True                       0
+        salm2     vjepa21_l    SIM  0.025  0.017  0.032           True                       0
+        salm2     vjepa21_l    NSS  0.147  0.087  0.215           True                       0
+scout_wo_task     vjepa21_l    KLD  0.356  0.304  0.403           True                       0
+scout_wo_task     vjepa21_l     CC  0.090  0.074  0.106           True                       0
+scout_wo_task     vjepa21_l    SIM  0.054  0.045  0.065           True                       0
+scout_wo_task     vjepa21_l    NSS  0.637  0.518  0.746           True                       0
+
+TODO: fill TEMPORAL entries for ['dinov3_l', 'salm2', 'scout_wo_task'] before using the table.

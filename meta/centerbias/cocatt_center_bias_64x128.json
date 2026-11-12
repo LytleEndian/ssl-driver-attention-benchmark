@@ -1,0 +1,17 @@
+{
+  "manifest": "meta/splits/cocatt_train.csv",
+  "manifest_sha256": "b11ddd0b78ebd324e4d994f85fb968bcbd2f295db603e10c85c1eb51a48297fb",
+  "frames_used": 58529,
+  "frames_skipped_empty": 0,
+  "stride": 1,
+  "gt_shape": [
+    256,
+    512
+  ],
+  "grid": [
+    64,
+    128
+  ],
+  "definition": "mean over frames of GT/sum(GT); block-mean to grid; renormalised to sum 1",
+  "sha256": "ef6caca05c3aec80f8eab3e2f6cd38a19b5740258dc5c1c89c6dad85acfae933"
+}

@@ -1,0 +1,142 @@
+{
+  "args": {
+    "manifest": "meta/splits/test_scored.csv",
+    "root": "$DATASETS/BDDA",
+    "model": [
+      "center_bias=$RESULTS/baselines/bdda_center_bias_72x128.npy",
+      "gbvs=$RESULTS/gbvs/bdda_v1/pred_test_common",
+      "dinov3_l=$RESULTS/dinov3/bdda_vitl16_light_s10/pred_test_common"
+    ],
+    "out": "$RESULTS/eval/bdda_test_gbvs_v1",
+    "gpu": 0,
+    "workers": 6,
+    "chunk": 48,
+    "n_boot": 10000,
+    "seed": 0,
+    "limit_videos": 0
+  },
+  "started": "2026-10-27T08:07:26",
+  "seconds": 457.3,
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.7.1+cu126",
+    "torchvision": "0.22.1+cu126",
+    "numpy": "2.5.2",
+    "pandas": "2.3.3"
+  },
+  "device": "cuda:0",
+  "manifest_sha256": "c421292f12ee97a2d2e70b821a99904741d9a90b5c79795a29cfec72bf8e0687",
+  "evaluate_py_sha256": "9abb20592ae38085027d465b21ab1594b6580657b1ffac72a8506039cdb886f3",
+  "gazemetrics_py_sha256": "ff302eb27d980827b995e5f327cd349baaf75cc90adb15214fe8ccb03b623fa9",
+  "n_videos": 294,
+  "n_frames": 84536,
+  "gt_shape": [
+    576,
+    1024
+  ],
+  "protocols": {
+    "scout": "bilinear resize (antialias) to GT size, GaussianBlur(11, sigma=2)",
+    "noblur": "bilinear resize (antialias) to GT size"
+  },
+  "metric_definitions": "SCOUT loss.py (see gazemetrics.py docstring)",
+  "aggregation": "frame -> mean per video -> mean over videos; NaN skipped",
+  "bootstrap": {
+    "unit": "video",
+    "n_boot": 10000,
+    "seed": 0,
+    "ci": "percentile 95%"
+  },
+  "models": {
+    "center_bias": {
+      "kind": "const",
+      "source": "$RESULTS/baselines/bdda_center_bias_72x128.npy",
+      "shape": [
+        72,
+        128
+      ],
+      "sha256": "605d54b0ab3ae005bfb7eb0aff5b7330dc9b2782bddf8bdbfa8981224eb114d4"
+    },
+    "gbvs": {
+      "kind": "dir",
+      "source": "$RESULTS/gbvs/bdda_v1/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "4cbeea05b76a97dbf04fe2a359936c2d8eeb8c1e8698d671f3bae09032083c9d"
+    },
+    "dinov3_l": {
+      "kind": "dir",
+      "source": "$RESULTS/dinov3/bdda_vitl16_light_s10/pred_test_common",
+      "n_npz": 294,
+      "sha256_of_npz_hashes": "49d471170a7b2372aee9d7939b0909007aafbb664be79c04752ba7977be172f4"
+    }
+  },
+  "pred_diagnostics": {
+    "center_bias": {
+      "pred_shape": [
+        72,
+        128
+      ],
+      "zero_px": 0,
+      "total_px": 779083776,
+      "min": 5.9394622553554655e-08,
+      "zero_px_frac": 0.0
+    },
+    "gbvs": {
+      "pred_shape": [
+        28,
+        32
+      ],
+      "zero_px": 42265,
+      "total_px": 75744256,
+      "min": 0.0,
+      "zero_px_frac": 0.0005579961073219862
+    },
+    "dinov3_l": {
+      "pred_shape": [
+        72,
+        128
+      ],
+      "zero_px": 1836251,
+      "total_px": 779083776,
+      "min": 0.0,
+      "zero_px_frac": 0.002356936515130306
+    }
+  },
+  "nan_counts": {
+    "center_bias|noblur": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    },
+    "center_bias|scout": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    },
+    "dinov3_l|noblur": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    },
+    "dinov3_l|scout": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    },
+    "gbvs|noblur": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    },
+    "gbvs|scout": {
+      "KLD": 0,
+      "CC": 0,
+      "SIM": 0,
+      "NSS": 0
+    }
+  }
+}

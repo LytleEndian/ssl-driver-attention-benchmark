@@ -1,0 +1,32 @@
+{
+  "model": "SalM2 (SaliencyMamba, AAAI 2025), frames only; frozen CLIP ViT-B/32 image branch",
+  "ckpt": "$RESULTS/salm2/bdda_20261028/model_best_salmm.tar",
+  "ckpt_sha256": "c48213be277eb522b7da9b92aa21b5bf73980383c84b9d53acbbdcd90c68606c",
+  "epoch": 93,
+  "valid_loss": 0.038574520498514175,
+  "trainable_params": 75918,
+  "test_json": "$DATASETS/CoCAtt/salm2/test.json",
+  "test_json_sha256": "986aab79bf9513e770d9ea123495538a0bfc4a50fca300876f4410925d1e251b",
+  "build": null,
+  "input_size": [
+    256,
+    256
+  ],
+  "output_size": [
+    256,
+    256
+  ],
+  "note": "raw sigmoid map at native 256x256 (frame squashed to square); no blur/normalisation",
+  "frames_per_vid": {
+    "J_0": 2113,
+    "J_1": 2183,
+    "J_2": 2129,
+    "J_3": 2100,
+    "K_0": 2159,
+    "K_1": 2164,
+    "K_2": 2181
+  },
+  "total_frames": 15029,
+  "pred_sha256": "037bb52fb0507a64c953f6ba9896a42b3400379aa0ffc1b745b5a3ea2975852d",
+  "seconds": 151.79398012161255
+}

@@ -1,0 +1,114 @@
+{
+  "model": "ML-Net (Cornia et al., ICPR 2016), zero-shot, authors' SALICON weights",
+  "port": {
+    "file": "./mlnet_torch.py",
+    "gazehead_commit": null,
+    "reference_repo": "$BASELINES/mlnet",
+    "reference_commit": null
+  },
+  "weights": {
+    "path": "$MODELS/mlnet/mlnet_salicon_weights.pkl",
+    "sha256": "6975e6ef98174b4c0fffd1ce11087d82bed53bdaf6dece8cf172b28c479709de",
+    "arrays": [
+      "convolution2d_1_W",
+      "convolution2d_1_b",
+      "convolution2d_2_W",
+      "convolution2d_2_b",
+      "convolution2d_3_W",
+      "convolution2d_3_b",
+      "convolution2d_4_W",
+      "convolution2d_4_b",
+      "convolution2d_5_W",
+      "convolution2d_5_b",
+      "convolution2d_6_W",
+      "convolution2d_6_b",
+      "convolution2d_7_W",
+      "convolution2d_7_b",
+      "convolution2d_8_W",
+      "convolution2d_8_b",
+      "convolution2d_9_W",
+      "convolution2d_9_b",
+      "convolution2d_10_W",
+      "convolution2d_10_b",
+      "convolution2d_11_W",
+      "convolution2d_11_b",
+      "convolution2d_12_W",
+      "convolution2d_12_b",
+      "convolution2d_13_W",
+      "convolution2d_13_b",
+      "convolution2d_14_W",
+      "convolution2d_14_b",
+      "convolution2d_15_W",
+      "convolution2d_15_b",
+      "param_0"
+    ],
+    "n_params": 15452145
+  },
+  "manifest": {
+    "path": "meta/splits/cocatt_test.csv",
+    "sha256": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251",
+    "frames": 15029,
+    "videos": 7
+  },
+  "decisions": {
+    "input": "480x640, aspect-preserving resize + centred zero pad (utilities.padding), BGR, Caffe mean subtraction 103.939/116.779/123.68, no scaling",
+    "kernel_flip": "yes",
+    "pool_variant": "theano",
+    "prior_upsampling": "bilinear x10, align_corners=False",
+    "output": "native 1/8-res map after final relu; padding removed by half-pixel linear resampling (crop_native); no blur, no normalisation; evaluate.py resizes + blurs",
+    "native_shape": [
+      60,
+      80
+    ],
+    "saved_shape": [
+      40,
+      80
+    ],
+    "dropout": "identity (eval)",
+    "precision": "fp32"
+  },
+  "timing": {
+    "seconds": 192.92912364006042,
+    "fps": 77.89907358952689,
+    "batch_size": 32,
+    "gpu_index": 0
+  },
+  "outputs": {
+    "pred_dir": "$RESULTS/mlnet/cocatt_v1/pred_test_common",
+    "npz_key": "sal",
+    "videos_written": 7,
+    "frames_written": 15029
+  },
+  "written_at": "2026-10-27T19:03:51-0500",
+  "argv": [
+    "tools/predict_mlnet.py",
+    "--manifest",
+    "meta/splits/cocatt_test.csv",
+    "--root",
+    "$DATASETS/CoCAtt",
+    "--out",
+    "$RESULTS/mlnet/cocatt_v1",
+    "--kernel-flip",
+    "yes",
+    "--pool",
+    "theano",
+    "--gpu",
+    "0"
+  ],
+  "env": {
+    "python": "3.12.3",
+    "executable": "$BASELINES/dinov3/.venv/bin/python",
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6",
+    "numpy": "2.5.2",
+    "cv2": "5.0.0",
+    "skimage": "0.26.0",
+    "h5py": "3.16.0",
+    "torchvision": "0.22.1+cu126",
+    "gpus_visible": [
+      "Tesla PG500-216",
+      "Tesla PG500-216"
+    ],
+    "CUDA_VISIBLE_DEVICES": "0,1"
+  }
+}

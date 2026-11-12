@@ -1,0 +1,69 @@
+{
+  "model": "U\u00b2-Net full (Qin et al., PR 2020), zero-shot, DUTS-TR salient-object weights (u2net.pth)",
+  "code": {
+    "repo": "$BASELINES/u2net",
+    "commit": null,
+    "model_file": "$BASELINES/u2net/model/u2net.py",
+    "gazehead_commit": null
+  },
+  "weights": {
+    "path": "$MODELS/u2net/u2net.pth",
+    "sha256": "10025a17f49cd3208afc342b589890e402ee63123d6f2d289a4a0903695cce58",
+    "tensors": 686,
+    "n_params": 44009869
+  },
+  "manifest": {
+    "path": "meta/splits/cocatt_test.csv",
+    "sha256": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251",
+    "frames": 15029,
+    "videos": 7
+  },
+  "decisions": {
+    "input": "squash to 320x320 via skimage.transform.resize(mode='constant'), RGB, image/image.max(), ImageNet mean/std (u2net_test.py RescaleT + ToTensorLab(flag=0))",
+    "output": "d1 (fused head) after the model's sigmoid, 320x320, before normPRED; no blur, no normalisation; evaluate.py resizes to 576x1024 (restores 16:9) + blurs",
+    "head": "outs[0] of U2NET.forward",
+    "precision": "fp32",
+    "label": "salient-OBJECT segmentation baseline (objectness vs gaze), not an attention model"
+  },
+  "timing": {
+    "seconds": 479.81895637512207,
+    "fps": 31.322230604516466,
+    "batch_size": 32,
+    "gpu_index": 1
+  },
+  "outputs": {
+    "pred_dir": "$RESULTS/u2net/cocatt_v1/pred_test_common",
+    "npz_key": "sal",
+    "videos_written": 7,
+    "frames_written": 15029,
+    "npz": "savez_compressed"
+  },
+  "written_at": "2026-10-27T19:08:51-0500",
+  "argv": [
+    "tools/predict_u2net.py",
+    "--manifest",
+    "meta/splits/cocatt_test.csv",
+    "--root",
+    "$DATASETS/CoCAtt",
+    "--out",
+    "$RESULTS/u2net/cocatt_v1",
+    "--gpu",
+    "1"
+  ],
+  "env": {
+    "python": "3.12.3",
+    "executable": "$BASELINES/dinov3/.venv/bin/python",
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6",
+    "numpy": "2.5.2",
+    "cv2": "5.0.0",
+    "skimage": "0.26.0",
+    "h5py": "3.16.0",
+    "torchvision": "0.22.1+cu126",
+    "gpus_visible": [
+      "Tesla PG500-216",
+      "Tesla PG500-216"
+    ],
+    "CUDA_VISIBLE_DEVICES": "0,1"
+  }
+}

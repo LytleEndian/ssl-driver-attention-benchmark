@@ -1,0 +1,49 @@
+Cross-dataset grid (Experiment 2) — decisions, written 2026-10-29 before any cross-dataset prediction was run.
+
+Scope
+  Sources: models trained on BDD-A (bdda_train/bdda_val) and on CoCAtt (cocatt_train/cocatt_val), as recorded in
+  the bdda_test_v4 / cocatt_test_v4 tables of record. No retraining. No re-selection of checkpoints.
+  Targets: bdda_test_scored (294 vid / 84,536 fr) and cocatt_test (7 vid / 15,029 fr), scout protocol, same scorer.
+  In-domain cells are the existing v4 rows and are not recomputed.
+
+Clip / input rules per model (the only decision that differs between models)
+  SalM2     per-frame; frame squashed to 256^2 exactly as in training. No change across datasets.
+  DINOv3-L  per-frame; same preprocessing as the source run. No change across datasets.
+  SCOUT     NATIVE clip rule kept: 16 consecutive frames of the target dataset at the target's native fps.
+            => BDD-A-trained SCOUT sees 4.0 s clips on CoCAtt (4 fps); CoCAtt-trained SCOUT sees 0.55 s clips on
+            BDD-A (29 fps). No temporal resampling. Rationale: this is the model as trained and as the authors
+            evaluated it; resampling would change the input distribution in a second way at once. Reported as a
+            limitation in the methods.
+  V-JEPA-L  TARGET dataset's clip rule with the SOURCE-trained decoder: c8s7 on BDD-A, c8s1 on CoCAtt (both 8
+            frames, so the token tensor fed to the decoder is identical in shape; only the physical time spanned
+            follows the target). Matches the in-domain rule "match physical time", and reuses the existing
+            target-dataset feature caches. No new feature extraction.
+
+Center bias
+  Each cross cell is reported against TWO reference rows: the source dataset's center bias (what the model could
+  have carried over) and the target dataset's center bias (the in-domain floor). Both already exist:
+  bdda_center_bias_72x128.npy, cocatt_center_bias_64x128.npy; each is scored on the other dataset's test set.
+
+Outputs
+  Predictions: new directory per cell under the model's results tree, e.g.
+    /srv/results/scout/bdda_wo_task_20261028/pred_cocatt_test/
+    /srv/results/scout/cocatt_wo_task_20261027/pred_bdda_test_scored/
+    /srv/results/salm2/bdda_20261028/pred_cocatt_test/
+    /srv/results/salm2/cocatt_20261027/pred_bdda_test_scored/
+    (DINOv3 / V-JEPA: train_gaze.py --predict-only rewrites run.json at --out, so each cross cell gets its own dir /srv/results/<backbone>/<source run>_on_<target>/ with pred_<target manifest>/ inside; the source run dir is untouched)
+  Each with run.json (weights sha, manifest sha, prediction sha, frame counts, clip rule as stated above).
+  Scoring: /srv/results/eval/bdda_crossdataset_v1/ and /srv/results/eval/cocatt_crossdataset_v1/ (fresh --out).
+
+Reporting
+  Per target: one table, rows = {source=target (from v4), source=other, source CB, target CB} per model;
+  paired bootstrap over frames for in-domain vs cross for each model; per-video win counts.
+  CoCAtt target: 2 test subjects — report paired numbers, not marginal CIs (existing limitation).
+
+Experiment 3 - pairwise agreement (added 2026-10-29)
+  Tool: /opt/gazehead/tools/pairwise_agreement.py. Per target test set, all pairs among 2 center biases, gbvs, mlnet, u2net,
+  4 models x 2 training sets, plus human GT (14x14). Metrics per frame: CC (gazemetrics.cc) and symmetric SIM (both
+  sum-normalised; NOT gazemetrics.sim, which is asymmetric). Center-removed variant: subtract the TARGET center bias from
+  both sum-normalised maps; CC on residuals is primary, SIM on positive residual parts secondary. Working grid = target
+  native pred size (72x128 BDD-A, 64x128 CoCAtt), scorer resize path. Aggregation and bootstrap as evaluate.py (video, 10k,
+  seed 0). Primary figure: in-domain 4 models + 3 baselines + GT per dataset, never averaged across datasets.
+  Outputs: /srv/results/eval/{bdda,cocatt}_pairwise_v2/ (v1 = same without gbvs/mlnet/u2net; cells identical).

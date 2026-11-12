@@ -1,0 +1,94 @@
+{
+  "args": {
+    "hub": "dinov3_vitl16",
+    "weights": "$MODELS/dinov3/dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth",
+    "repo": "$BASELINES/dinov3",
+    "root": "$DATASETS/CoCAtt",
+    "splits": "meta/splits",
+    "train_manifest": "cocatt_train",
+    "val_manifest": "cocatt_val",
+    "test_manifests": "cocatt_test",
+    "out": "$RESULTS/dinov3/cocatt_vitl16_light_s2",
+    "input": [
+      256,
+      512
+    ],
+    "target": [
+      64,
+      128
+    ],
+    "pred_size": [
+      64,
+      128
+    ],
+    "width": 128,
+    "epochs": 30,
+    "bs": 32,
+    "lr": 0.001,
+    "wd": 0.0001,
+    "warmup": 500,
+    "stride": 2,
+    "val_stride": 2,
+    "workers": 5,
+    "gpu": 1,
+    "seed": 0,
+    "max_steps": 0,
+    "log_every": 100,
+    "no_predict": false,
+    "predict_only": false,
+    "ckpt": null,
+    "cache": "/srv/cache/cocatt_256x512_all",
+    "backbone": "dinov3",
+    "vjepa_arch": "vit_large",
+    "feat_norm": "none",
+    "clip_frames": 0,
+    "clip_step": 0,
+    "train_features": null,
+    "val_features": null
+  },
+  "torch": "2.7.1+cu126",
+  "cuda": "12.6",
+  "gpu": "Tesla PG500-216",
+  "weights_sha256": "8aa4cbddda325040fc78db2c272754af6ebe8ff2c55f6ec4f1964d8890f66035",
+  "dinov3_commit": "6876159a11b4df116f30f667f8c9888617df0751",
+  "code_sha256": {
+    "gazehead.py": "6158d66ab42435b2d5aef83fdf0c79ec643735008d8cfb95b9b596c6a0154c86",
+    "data.py": "19927c3e3bdb9e77931f9db22bae6bf9ad84cccbdd796814bc1920430be8d0c9",
+    "train_gaze.py": "3844aa79e3ba4424d156997e1b071d40db9e2933401ee1f6eaf917bd863b66b0"
+  },
+  "manifests": {
+    "cocatt_train": "b11ddd0b78ebd324e4d994f85fb968bcbd2f295db603e10c85c1eb51a48297fb",
+    "cocatt_val": "bfd800a157b16b4aad1ad73f99afc511fa20a4eea80887a48ec58cec0b15ffc1",
+    "cocatt_test": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251"
+  },
+  "cache": {
+    "dir": "/srv/cache/cocatt_256x512_all",
+    "n": 95606,
+    "frames_shape": [
+      95606,
+      3,
+      256,
+      512
+    ],
+    "gt_shape": [
+      95606,
+      64,
+      128
+    ],
+    "dtype": "uint8",
+    "frame_transform": "PIL RGB -> v2.ToImage -> v2.Resize((256, 512), antialias=True)",
+    "gt_transform": "PIL L -> resize((128,64), BILINEAR)",
+    "manifests": {
+      "cocatt_allframes": "5600cb1f6b949586cb7fefe08f3021a1fc86da4cf9f6116fb6ae611ec10e88ab"
+    },
+    "torch": "2.7.1+cu126",
+    "torchvision": "0.22.1+cu126",
+    "build_seconds": 180
+  },
+  "decoder_params": {
+    "bn": 8192,
+    "adapter": 524416,
+    "body": 92289,
+    "total": 624897
+  }
+}

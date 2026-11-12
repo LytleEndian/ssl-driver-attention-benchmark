@@ -1,0 +1,43 @@
+{
+  "args": {
+    "run": [
+      "bdda=$RESULTS/eval/bdda_crossdataset_v1",
+      "cocatt=$RESULTS/eval/cocatt_crossdataset_v1"
+    ],
+    "protocol": "scout",
+    "n_boot": 10000,
+    "seed": 0,
+    "out": "$RESULTS/eval/transfer_gaps_v2"
+  },
+  "started": "2026-11-08T20:20:27",
+  "seconds": 0.7,
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.2",
+    "pandas": "2.3.3"
+  },
+  "script_sha256": "21cb680e5fba7b3f8d9257be4da13d37e62478cf9c8a683d5c487e19334b49f1",
+  "evaluate_py_sha256": "bf6941560d3d951185927143c9e6c7fc75c1a3d8704e612039fc3d0e4a0e8e59",
+  "inputs_sha256": {
+    "/srv/results/eval/bdda_crossdataset_v1/scores_per_video.csv": "aca01d677ad16be0d1e6e69c32e4fb0ce9592df50eddc333067eb94b8fb08dd9",
+    "/srv/results/eval/cocatt_crossdataset_v1/scores_per_video.csv": "c88855ff3786f53b8f72adb6eeeabdfb9384c8f482fa001841a2c47c4cc50609"
+  },
+  "protocols_seen": {
+    "bdda": [
+      "noblur",
+      "scout"
+    ],
+    "cocatt": [
+      "noblur",
+      "scout"
+    ]
+  },
+  "definitions": "degradation>0 = worse after transfer; diff(A,B)=deg(A)-deg(B); video-level paired bootstrap, percentile 95% CI, shared indices per target",
+  "temporal": {
+    "vjepa21_l": "8-frame clip, step round(fps*0.25) (CLIP_DECISION.txt)",
+    "scout_wo_task": "TODO: SCOUT native clip",
+    "dinov3_l": "TODO",
+    "salm2": "TODO",
+    "center": "static map (train mean)"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "manifest": "meta/splits/train.csv",
+  "manifest_sha256": "a9901b15a4fedf7aeae8c8398e533a4d1975614f11a7cb072def19bb3a1da7dc",
+  "frames_used": 278602,
+  "frames_skipped_empty": 0,
+  "stride": 1,
+  "gt_shape": [
+    576,
+    1024
+  ],
+  "grid": [
+    72,
+    128
+  ],
+  "definition": "mean over frames of GT/sum(GT); block-mean to grid; renormalised to sum 1",
+  "sha256": "605d54b0ab3ae005bfb7eb0aff5b7330dc9b2782bddf8bdbfa8981224eb114d4"
+}

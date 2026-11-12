@@ -1,0 +1,48 @@
+bdda_SOTA_DECISION.txt — 2026-10-28
+Intended path: /opt/gazehead/meta/splits/bdda_SOTA_DECISION.txt
+Decisions for the "worked" BDD-A rows of SCOUT w/o task and SalM², trained by us, fixed BEFORE training.
+Purpose: validity check of the ports and the scorer against the papers' own BDD-A numbers, and
+worked models for the cross-dataset grid and pairwise analysis.  The table keeps both rows per model:
+  SCOUT w/o task (paper)  KLD 1.04  CC 0.63  SIM 0.48  NSS 3.06  (Kotseruba & Tsotsos, IV 2024, Table III,
+                          their split with 135 videos excluded, their Fahimi&Bruce metrics with blur)
+  SalM² (paper)           KLD 1.08  CC 0.64  SIM 0.47  (Zhao et al., AAAI 2025, Table 1, authors'
+                          preprocessed BDD-A release, Matlab metrics)
+  SCOUT w/o task (ours), SalM² (ours): this file.
+
+1. Split and frames: the gazehead BDD-A manifests.  bdda_train (899 videos / 278,602 frames) and
+   bdda_val (107 / 34,608) are the official splits minus SCOUT's 135 exclusions; the scored test set is
+   bdda_test_scored (294 videos / 84,536 frames) = SCOUT's own test sample list (bdda_test_common,
+   gt = clip start + 15) minus empty-GT rows.  So the worked SCOUT row is scored on the paper's frames.
+   Frames 0-based at our 29 fps extraction, every frame present; GT = the 1024x576 SCOUT-style crop on
+   disk (gazemap 1024x768 cropped 1024:576:0:91).  Same frames and GT as every other row in bdda_test_v3.
+
+2. Selection: each model's own validation loss (SCOUT: KLD on its blurred/resized map; SalM²: BCE),
+   best epoch.  One seed (SCOUT: 0 as shipped; SalM²: 42 default).  Epochs: SCOUT 20 with its early
+   stopping (patience 2); SalM² its default 100 (if stopped early for time: best-so-far checkpoint, stop
+   epoch recorded in run.json).
+
+3. Strides.  SCOUT: its own defaults on its own dataset — obs_length//2 = 8 for train/val (35,264 /
+   4,378 clips; 0.28 s at 29 fps), 1 for test.  Clips = 16 consecutive frames ending at the target
+   (0.55 s), frame 0 repeated before video start.  SalM²: single-frame model; train stride 10 and val
+   stride 5 (28,526 / 6,980 frames), the SSL rows' strides, because 100 epochs over all 278,602 frames
+   (near-duplicates at 29 fps) would take ~40 h on a V100 for the same number of distinct views; test
+   is every frame of bdda_test_scored.  Recorded in salm2/build.json.
+
+4. Resolution and preprocessing: each model's own.  SCOUT 224x224 from the 1280x720 frame (ImageNet
+   mean/std, squashed 16:9 -> 1:1 as its BDD-A loader does), loss against the native 1024x576 GT after
+   its own blur+resize.  SalM² 256x256 (/255 only), GT resized to 256x256, /255 with NO per-frame
+   renormalisation (its BDD-A loader does none; TrafficGaze/DrFixD do), horizontal-flip augmentation.
+   Predictions saved at native size (SCOUT 224x224, SalM² 256x256) before any blur/resize; the scorer
+   restores the aspect ratio when resizing to the GT.
+
+5. Hyperparameters: own defaults.  SCOUT: Adam 1e-4, batch 4, KLD loss, Swin-S Kinetics-400 fine-tuned,
+   ReduceLROnPlateau.  SalM²: Adam 1e-3, wd 1e-4, batch 32, BCE, frozen CLIP ViT-B/32.
+
+6. Outputs: /srv/results/scout/bdda_wo_task_20261028/ and /srv/results/salm2/bdda_20261028/, each with
+   pred_bdda_test_scored/.  Scored in one all-rows run /srv/results/eval/bdda_test_v4 with every row of
+   bdda_test_v3 (regression check: those must reproduce to 3 decimals).
+
+7. Reading the result (written before seeing it): worked KLD within ~0.05 of the paper's (1.04 / 1.08)
+   validates the ports and shows the SSL rows' lead (V-JEPA-L 0.814, DINOv3-L 0.916) is not a protocol
+   artefact.  Worked rows much lower than the papers' would point at the scorer or the GT crop; much
+   higher at the ports.  Either way both rows are reported, labelled, with this file cited.

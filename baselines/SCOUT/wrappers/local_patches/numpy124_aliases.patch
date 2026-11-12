@@ -1,0 +1,13 @@
+diff --git a/dataloader.py b/dataloader.py
+index 0b125be..c3b26b3 100644
+--- a/dataloader.py
++++ b/dataloader.py
+@@ -484,7 +484,7 @@ class DReyeVEDataset(Dataset):
+ 
+ 		angle_deg = math.degrees(math.atan2(y_px[m]-y_px[-1],x_px[m]-x_px[-1]))
+ 
+-		return (x_px.astype(np.int), y_px.astype(np.int), angle_deg)
++		return (x_px.astype(int), y_px.astype(int), angle_deg)
+ 
+ 	def get_route_map(self, vid_id, start_idx, route_info, debug=False):
+ 		# x,y are horz and vert coords, respectively

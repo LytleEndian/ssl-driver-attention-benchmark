@@ -1,0 +1,45 @@
+cocatt_SOTA_DECISION.txt — 2026-10-27
+Intended path: /opt/gazehead/meta/splits/cocatt_SOTA_DECISION.txt
+Decisions for the driving-attention SOTA rows on CoCAtt (SCOUT w/o task, SalM²), fixed BEFORE
+either model is trained or any test prediction is made.
+
+0. Benchmark eligibility (frames-only rule)
+   - SCOUT: only the w/o-task variant (use_task False, no map).  No vehicle data, GPS, labels.
+   - SalM²: qualifies.  Its "top-down" branch is a frozen CLIP *image* encoder on the same frame
+     (ViT-B/32 — the repo's SalMM.py notes the paper's "RN50x16" was a mislabel); no text labels or
+     external annotations at train or test time.  Methods: SalM² carries a second frozen image
+     backbone (CLIP, excluded from its 0.08M trainable-parameter count).
+   - Mamba CUDA kernels verified on V100 (sm_70): fwd/bwd OK, torch 2.2.0+cu121.
+
+1. Split and frames: identical to every other CoCAtt row.  Train cocatt_train.csv (A,D,F,G,H,I,L),
+   select on cocatt_val.csv (B,C), predict all 15,029 rows of cocatt_test.csv (J,K).  Metadata
+   columns (intention, segment, distraction, speed) are never exported to either loader.
+
+2. Selection rule: each model's OWN validation loss (SCOUT: KLD; SalM²: BCE), best epoch, as in
+   its training script — not our KLD.  One seed (SCOUT: torch/np seed 0 as shipped; SalM²: --seed 42
+   default).  Epochs: SCOUT 20 with its early stopping (patience 2, ReduceLROnPlateau); SalM² its
+   default (100) — if stopped early for time, the best-so-far checkpoint is used and the stop epoch
+   recorded in run.json.
+
+3. SCOUT clip: native 16 frames, which is 4.0 s at 4 fps (BDD-A: ~0.5 s).  Kept because changing
+   the temporal input changes the published model; stated in Methods next to the V-JEPA rule
+   (which matched physical time: 8 frames x step 1 = 2.0 s).  Clips are built from the raw
+   images_4hz PNGs (every camera frame, dropout frames included) with the target on a manifest row
+   only; frames before session start repeat frame 0 (same padding as V-JEPA).
+   Sampling stride: train/val step 2 (29,266 / 7,687 samples, the SSL recipe's counts), test step 1.
+   SCOUT's own step (obs_length//2 = 8) was tuned for ~30 fps and would skip 7/8 of CoCAtt targets.
+
+4. Resolution: each model's own.  SCOUT 224x224 (ImageNet mean/std), SalM² 256x256 (/255 only),
+   both squashing the 2:1 frame as they do for BDD-A (1280x720 -> square).  Predictions saved at the
+   model's native output size, before any blur/resize/normalisation; evaluate.py restores the aspect
+   ratio when resizing to the 256x512 GT.  GT for both: convert('L'), /255 (already per-frame
+   max-normalised).  SalM² keeps its horizontal-flip augmentation (its BDD-A loader does the same).
+
+5. Hyperparameters: each model's own BDD-A/config defaults.  SCOUT: Adam 1e-4, batch 4, KLD loss,
+   Swin-S Kinetics-400 backbone fine-tuned.  SalM²: Adam 1e-3, wd 1e-4, batch 32, BCE loss.
+
+6. Outputs: /srv/results/scout/cocatt_wo_task_20261027/{config.yaml,checkpoint_*.pt,pred_cocatt_test/}
+   and /srv/results/salm2/cocatt_20261027/{model_best_salmm.tar,train_log,pred_cocatt_test/}.
+   Both scored in one all-rows run: /srv/results/eval/cocatt_test_v4 (scout protocol).
+   Sanity before scoring: SCOUT val KLD in the range of its BDD-A val; SalM² val CC/SIM/KLD printed by
+   its validate(); overlay on 3-4 test frames for each.

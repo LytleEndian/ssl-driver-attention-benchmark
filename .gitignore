@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# weights go to the GitHub release, not the repo
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# predictions and dataset content are never deposited
+predictions/
+preds/
+frames/
+*.mp4
+*.avi
+
+# thesis and papers stay out
+*.pdf
+*.tex
+*.bib

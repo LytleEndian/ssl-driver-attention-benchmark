@@ -1,0 +1,12 @@
+2026-10-27  V-JEPA 2.1 ViT-L BDD-A clip length chosen on VALIDATION ONLY (before any test prediction):
+  8 frames step 7  best ep 3  val KLD 1.01363  CC 0.64537   <- chosen
+ 16 frames step 7  best ep 3  val KLD 1.01588  CC 0.64548
+Rule set in advance: within 0.005 val KLD -> 8 frames (cheaper, less padding: 16% vs 35% of train clips).
+
+2026-10-27  Clip step on other datasets
+Rule: hold physical time constant, not frame indices. BDD-A used step 7 at 29 fps = 0.24 s between
+clip frames (V-JEPA 2.1 pretraining rate, ~4 fps). clip_step = round(fps * 0.25):
+  CoCAtt 4 fps -> step 1 (8 frames = 2.0 s history; BDD-A: 1.9 s)
+  DR(eye)VE 25 fps -> step 6
+Clip length stays 8 frames (chosen on BDD-A validation, not re-tuned per dataset). Padding rule unchanged
+(repeat frame 0). Decided before any CoCAtt V-JEPA run.

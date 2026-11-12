@@ -1,0 +1,11 @@
+2026-10-27  CoCAtt eye-tracker dropout and clip history
+Frames with an empty or missing gaze map (tracker dropout) are excluded from training targets, validation
+and scoring (cocatt_{train,val,test}.csv; cocatt_excluded_frames.csv). They are scattered through sessions
+(mostly 1-3 frames, holes up to 28; 6,697 of 95,606 frames = 7.0% overall; subject I 23-29% per session).
+Video models still need those frames as clip history, so the frame cache (/srv/cache/cocatt_256x512_all)
+holds every camera frame (cocatt_allframes.csv, built by tools/build_cocatt_allframes.py), with an all-zero
+GT slot for dropout frames that is never read as a target. V-JEPA clips therefore see the real 2 s of
+history; only the supervision is filtered. DINOv3 (single frame) is unaffected; it is trained on the same
+cache so both models share one cache hash in run.json. The earlier valid-frames-only cache
+(/srv/cache/cocatt_256x512) is byte-identical on shared rows (500-row check) and can be deleted.
+Decided before any CoCAtt V-JEPA run.
