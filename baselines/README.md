@@ -13,4 +13,4 @@ benchmark. Clone upstream at that commit, then apply `patch.diff` and copy
 | VJEPA2.1 | TODO | TODO |
 | MLNet | https://github.com/marcellacornia/mlnet.git | `bf6e4a990591` |
 | U2Net | https://github.com/xuebinqin/U-2-Net.git | `ac7e1c817eca` |
-| GBVS | TODO | TODO |
+| GBVS | https://github.com/shreelock/gbvs.git | `4c7e3c58e786` |

@@ -34,7 +34,7 @@ corresponding command-line options.
 | Path | Holds |
 |---|---|
 | `/opt/gazehead` | This repository |
-| `/opt/<Repo>` | Each baseline's clone (`/opt/SCOUT`, `/opt/SaliencyMamba`, `/opt/dinov3`, `/opt/vjepa2`, `/opt/mlnet`, `/opt/u2net`) |
+| `/opt/<Repo>` | Each baseline's clone (`/opt/SCOUT`, `/opt/SaliencyMamba`, `/opt/dinov3`, `/opt/vjepa2`, `/opt/mlnet`, `/opt/u2net`, `/opt/gbvs`) |
 | `/srv/datasets/BDDA`, `/srv/datasets/CoCAtt` | Datasets |
 | `/srv/models/<model>` | Pretrained weights |
 | `/srv/cache` | Frame caches built by `tools/build_frame_cache.py` |
