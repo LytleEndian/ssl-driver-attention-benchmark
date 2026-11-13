@@ -10,8 +10,6 @@ The benchmark attaches a small gaze decoder to frozen self-supervised backbones
 (DINOv3, V-JEPA 2.1) and compares it with driver-attention models (SCOUT, SalM²)
 and saliency baselines (GBVS, ML-Net, U²-Net, center bias) on BDD-A and CoCAtt.
 
-DOI: [DOI pending]
-
 ## What is here, and what is not
 
 | Path | Contents |
@@ -192,8 +190,7 @@ To cite the code and scores themselves:
              for a Self-Supervised Driver-Attention Benchmark},
   year    = {2026},
   version = {1.0.0},
-  url     = {https://github.com/LytleEndian/ssl-driver-attention-benchmark},
-  doi     = {[DOI pending]}
+  url     = {https://github.com/LytleEndian/ssl-driver-attention-benchmark}
 }
 ```
 

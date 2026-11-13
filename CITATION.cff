@@ -11,7 +11,6 @@ authors:
     affiliation: "University of Arkansas at Little Rock"
     # orcid: "https://orcid.org/0000-0000-0000-0000"
 repository-code: "https://github.com/LytleEndian/ssl-driver-attention-benchmark"
-# doi: 10.5281/zenodo.XXXXXXX        # add after Zenodo issues it
 keywords:
   - driver attention
   - saliency
