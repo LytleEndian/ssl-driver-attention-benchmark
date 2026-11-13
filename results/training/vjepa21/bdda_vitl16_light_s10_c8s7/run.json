@@ -35,14 +35,14 @@
     "no_predict": true,
     "predict_only": false,
     "ckpt": null,
-    "cache": "/srv/cache/bdda_288x512",
+    "cache": "$CACHE/bdda_288x512",
     "backbone": "vjepa21",
     "vjepa_arch": "vit_large",
     "feat_norm": "none",
     "clip_frames": 8,
     "clip_step": 7,
-    "train_features": "/srv/cache/vjepa21L_bdda_c8s7/train_s10",
-    "val_features": "/srv/cache/vjepa21L_bdda_c8s7/val_s5"
+    "train_features": "$CACHE/vjepa21L_bdda_c8s7/train_s10",
+    "val_features": "$CACHE/vjepa21L_bdda_c8s7/val_s5"
   },
   "torch": "2.7.1+cu126",
   "cuda": "12.6",
@@ -64,8 +64,8 @@
     "unexpected": []
   },
   "features": {
-    "train": "/srv/cache/vjepa21L_bdda_c8s7/train_s10",
-    "val": "/srv/cache/vjepa21L_bdda_c8s7/val_s5"
+    "train": "$CACHE/vjepa21L_bdda_c8s7/train_s10",
+    "val": "$CACHE/vjepa21L_bdda_c8s7/val_s5"
   },
   "manifests": {
     "excluded_videos.csv": "812579d39fa50521009c0f40b632a9d11727a05d87d776b2158b0f4b5d41def9",

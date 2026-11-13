@@ -19,8 +19,8 @@
   "script_sha256": "21cb680e5fba7b3f8d9257be4da13d37e62478cf9c8a683d5c487e19334b49f1",
   "evaluate_py_sha256": "bf6941560d3d951185927143c9e6c7fc75c1a3d8704e612039fc3d0e4a0e8e59",
   "inputs_sha256": {
-    "/srv/results/eval/bdda_crossdataset_v1/scores_per_video.csv": "aca01d677ad16be0d1e6e69c32e4fb0ce9592df50eddc333067eb94b8fb08dd9",
-    "/srv/results/eval/cocatt_crossdataset_v1/scores_per_video.csv": "c88855ff3786f53b8f72adb6eeeabdfb9384c8f482fa001841a2c47c4cc50609"
+    "$RESULTS/eval/bdda_crossdataset_v1/scores_per_video.csv": "aca01d677ad16be0d1e6e69c32e4fb0ce9592df50eddc333067eb94b8fb08dd9",
+    "$RESULTS/eval/cocatt_crossdataset_v1/scores_per_video.csv": "c88855ff3786f53b8f72adb6eeeabdfb9384c8f482fa001841a2c47c4cc50609"
   },
   "protocols_seen": {
     "bdda": [

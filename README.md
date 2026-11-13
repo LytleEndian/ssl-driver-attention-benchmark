@@ -40,7 +40,7 @@ corresponding command-line options.
 | `/srv/cache` | Frame caches built by `tools/build_frame_cache.py` |
 | `/srv/results` | Run outputs; `results/` here mirrors its structure |
 
-In `run.json` these appear as `$DATASETS`, `$MODELS`, `$RESULTS` and `$BASELINES`.
+In `run.json` these appear as `$DATASETS`, `$MODELS`, `$CACHE`, `$RESULTS` and `$BASELINES`.
 
 ## Replicating the results
 
@@ -59,7 +59,7 @@ The steps follow Appendices A and B.
    The frozen lists in `meta/splits/` are the ones used; `tools/build_bdda_splits.py`
    and `tools/build_cocatt_splits.py` show how they were built.
 4. **Train** the gaze heads on the frozen DINOv3 and V-JEPA 2.1 backbones with
-   `train_gaze.py` ([ARGS]).
+   `train_gaze.py`.
 5. **Predict** with each baseline using `baselines/<name>/UPSTREAM.md` and the
    `tools/predict_*.py` scripts.
 6. **Score** every prediction set with `evaluate.py` against the center-bias maps
@@ -67,13 +67,27 @@ The steps follow Appendices A and B.
 7. **Cross-dataset and agreement** results: `tools/transfer_gaps.py`,
    `tools/pairwise_agreement.py`, `tools/shuffled_agreement.py`.
 
-Compare your `summary.csv` and `pairwise.csv` with the matching run in `results/`.
+**Exact commands.** `COMMANDS.md` lists the command for every deposited run,
+rebuilt from the arguments recorded in its `run.json`. Paths use the variables
+below; with the layout above:
+
+```bash
+export DATASETS=/srv/datasets MODELS=/srv/models CACHE=/srv/cache RESULTS=/srv/results BASELINES=/opt
+```
+
+Compare your result files with the matching run in `results/`.
 
 ## Acknowledgements
 
 The BDD-A test list and exclusion list follow those published with SCOUT
-(Kotseruba & Tsotsos, IV 2024), [URL]. [State whether the lists are included
-here under SCOUT's license or must be obtained from SCOUT's repository.]
+(Kotseruba & Tsotsos, IV 2024). Those lists (bdda_excluded_videos.csv bdda_scout_test_samples.csv bdda_scout_eval_frames.csv) are not included here; obtain them from SCOUT's repository (`baselines/SCOUT/UPSTREAM.md`).
+
+`tools/gbvs_fast.py` is adapted from the GBVS implementation linked in
+`baselines/GBVS/UPSTREAM.md`, and `mlnet_torch.py` is a PyTorch port of ML-Net
+(`baselines/MLNet/UPSTREAM.md`). Files under `baselines/*/wrappers/` and each
+`patch.diff` were written for this benchmark against the linked upstream
+repositories; where an upstream license applies it is reproduced as
+`LICENSE.upstream` beside them. No unmodified upstream file is included.
 
 ## License
 

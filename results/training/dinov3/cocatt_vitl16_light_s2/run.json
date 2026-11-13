@@ -37,7 +37,7 @@
     "no_predict": false,
     "predict_only": false,
     "ckpt": null,
-    "cache": "/srv/cache/cocatt_256x512_all",
+    "cache": "$CACHE/cocatt_256x512_all",
     "backbone": "dinov3",
     "vjepa_arch": "vit_large",
     "feat_norm": "none",
@@ -62,7 +62,7 @@
     "cocatt_test": "40bdaa67b796f39cd1c36ad335c0783e9b1af7f4a4d06c09830ea3293c39b251"
   },
   "cache": {
-    "dir": "/srv/cache/cocatt_256x512_all",
+    "dir": "$CACHE/cocatt_256x512_all",
     "n": 95606,
     "frames_shape": [
       95606,
