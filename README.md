@@ -1,8 +1,8 @@
-# gazehead: driver-attention benchmark
+# ssl-driver-attention-benchmark
 
 Code, split lists, decision files and per-video scores needed to replicate the
-driver-attention benchmark in *[DISSERTATION TITLE]* (Matthew [SURNAME],
-University of Arkansas at Little Rock, [YEAR]). This repository is the deposit
+driver-attention benchmark in *Self-Supervised Visual Representations in Driving Scenes* (Matthew Booker Mason Lytle,
+University of Arkansas at Little Rock, 2026). This repository is the deposit
 described in Appendix E.
 
 DOI: [DOI pending]
@@ -33,12 +33,16 @@ corresponding command-line options.
 
 | Path | Holds |
 |---|---|
-| `/opt/gazehead` | This repository |
+| `/opt/gazehead` | This repository (the scripts expect this folder name) |
 | `/opt/<Repo>` | Each baseline's clone (`/opt/SCOUT`, `/opt/SaliencyMamba`, `/opt/dinov3`, `/opt/vjepa2`, `/opt/mlnet`, `/opt/u2net`, `/opt/gbvs`) |
 | `/srv/datasets/BDDA`, `/srv/datasets/CoCAtt` | Datasets |
 | `/srv/models/<model>` | Pretrained weights |
 | `/srv/cache` | Frame caches built by `tools/build_frame_cache.py` |
 | `/srv/results` | Run outputs; `results/` here mirrors its structure |
+
+```bash
+git clone https://github.com/LytleEndian/ssl-driver-attention-benchmark.git /opt/gazehead
+```
 
 In `run.json` these appear as `$DATASETS`, `$MODELS`, `$CACHE`, `$RESULTS` and `$BASELINES`.
 
@@ -98,5 +102,5 @@ CC BY 4.0. Datasets and baseline code and weights remain under their owners' ter
 
 See `CITATION.cff`, or cite the dissertation:
 
-> Matthew [SURNAME]. *[DISSERTATION TITLE]*. PhD dissertation, University of
-> Arkansas at Little Rock, [YEAR]. DOI: [DOI pending]
+> Matthew Booker Mason Lytle. *Self-Supervised Visual Representations in Driving Scenes*. PhD dissertation, University of
+> Arkansas at Little Rock, 2026. DOI: [DOI pending]

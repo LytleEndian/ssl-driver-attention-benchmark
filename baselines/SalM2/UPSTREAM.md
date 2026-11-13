@@ -5,4 +5,4 @@
 - Changes to upstream files: `patch.diff` (`git apply patch.diff` in the clone)
 - Files added for this benchmark: `wrappers/`
 - Upstream license: `LICENSE.upstream` (applies to `patch.diff` and files adapted from upstream)
-- Weights: TODO (which file, where it comes from, its license)
+- Weights: Trained for this benchmark (frames only, frozen CLIP ViT-B/32 image branch). Checkpoints are not included; each prediction run.json records the checkpoint, epoch and sha256.

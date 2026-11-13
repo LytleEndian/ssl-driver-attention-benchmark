@@ -1,16 +1,16 @@
 cff-version: 1.2.0
 message: "If you use this code or these scores, please cite the dissertation below."
 type: software
-title: "gazehead: driver-attention benchmark code and scores"
+title: "ssl-driver-attention-benchmark: code, split lists and scores for a self-supervised driver-attention benchmark"
 version: 1.0.0
 date-released: 2026-12-01            # set to the release date
 license: MIT
 authors:
-  - given-names: Matthew
-    family-names: "[SURNAME]"
+  - given-names: "Matthew Booker Mason"
+    family-names: Lytle
     affiliation: "University of Arkansas at Little Rock"
     # orcid: "https://orcid.org/0000-0000-0000-0000"
-repository-code: "https://github.com/[OWNER]/[REPO]"
+repository-code: "https://github.com/LytleEndian/ssl-driver-attention-benchmark"
 # doi: 10.5281/zenodo.XXXXXXX        # add after Zenodo issues it
 keywords:
   - driver attention
@@ -20,10 +20,11 @@ keywords:
 preferred-citation:
   type: thesis
   thesis-type: "PhD dissertation"
-  title: "[DISSERTATION TITLE]"
+  department: "Department of Information Science"
+  title: "Self-Supervised Visual Representations in Driving Scenes"
   authors:
-    - given-names: Matthew
-      family-names: "[SURNAME]"
+    - given-names: "Matthew Booker Mason"
+      family-names: Lytle
   institution:
     name: "University of Arkansas at Little Rock"
   year: 2026                          # year of the degree
