@@ -84,7 +84,7 @@ Compare your result files with the matching run in `results/`.
 ## Acknowledgements
 
 The BDD-A test list and exclusion list follow those published with SCOUT
-(Kotseruba & Tsotsos, IV 2024). Those lists (bdda_excluded_videos.csv bdda_scout_test_samples.csv bdda_scout_eval_frames.csv) are not included here; obtain them from SCOUT's repository (`baselines/SCOUT/UPSTREAM.md`).
+(Kotseruba & Tsotsos, IV 2024). They are included in `meta/splits/` (bdda_excluded_videos.csv bdda_scout_test_samples.csv bdda_scout_eval_frames.csv); SCOUT is MIT-licensed and its license is reproduced in `baselines/SCOUT/LICENSE.upstream`.
 
 `tools/gbvs_fast.py` is adapted from the GBVS implementation linked in
 `baselines/GBVS/UPSTREAM.md`, and `mlnet_torch.py` is a PyTorch port of ML-Net

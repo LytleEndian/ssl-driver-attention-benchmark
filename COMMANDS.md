@@ -13,7 +13,7 @@ them. Flags were checked against each script's `--help` unless noted.
 
 **Manifest names.** Earlier BDD-A runs refer to manifests without the
 `bdda_` prefix. These are byte-identical files, so use the prefixed one in
-`meta/splits/`: `test_common` = `bdda_test_common`, `test_salm2_own` = `bdda_test_salm2_own`, `test_scored` = `bdda_test_scored`, `train` = `bdda_train`, `val` = `bdda_val`.
+`meta/splits/`: `excluded_videos` = `bdda_excluded_videos`, `scout_eval_frames` = `bdda_scout_eval_frames`, `scout_test_samples` = `bdda_scout_test_samples`, `test_common` = `bdda_test_common`, `test_salm2_own` = `bdda_test_salm2_own`, `test_scored` = `bdda_test_scored`, `train` = `bdda_train`, `val` = `bdda_val`.
 
 ## training
 
