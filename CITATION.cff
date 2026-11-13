@@ -27,4 +27,5 @@ preferred-citation:
       family-names: Lytle
   institution:
     name: "University of Arkansas at Little Rock"
-  year: 2026                          # year of the degree
+  year: 2026
+  month: 12
