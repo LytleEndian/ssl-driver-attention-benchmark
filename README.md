@@ -57,8 +57,8 @@ The steps follow Appendices A and B.
    ```
 2. **Datasets.** Download BDD-A and CoCAtt (manual-drive sessions only; the
    authors' processed release) and place them under one root, `$DATASETS`.
-   - BDD-A: [URL]
-   - CoCAtt: [URL]
+   - BDD-A (BDD-Attention): http://bdd-data.berkeley.edu/download.html
+   - CoCAtt: https://cocatt-dataset.github.io/ (data link on that page)
 3. **Frames and splits.** Extract BDD-A frames with `tools/extract_bdda_frames.sh`.
    The frozen lists in `meta/splits/` are the ones used; `tools/build_bdda_splits.py`
    and `tools/build_cocatt_splits.py` show how they were built.
