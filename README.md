@@ -24,12 +24,14 @@ DOI: [DOI pending]
 | `results/in-domain/`, `results/cross-dataset/`, `results/agreement/` | Per run: per-video scores, summary or pairwise tables and `run.json`, to check a replication against |
 | `results/training/`, `results/prediction/` | `run.json` (settings) and scores for each gaze-head training run and baseline prediction run |
 | `baselines/` | For each upstream project: repository, commit used, and the patch or wrapper files written for this benchmark |
+| `weights/` | Trained gaze-decoder heads for the V-JEPA 2.1 ViT-L/16 runs (decoder only, about 0.6M parameters each), with `SHA256SUMS` |
 | `COMMANDS.md` | The command for every deposited run, rebuilt from its `run.json` |
 | `requirements.txt` | Pinned environment (Python 3.12.3, PyTorch 2.7.1) |
 
-**Not included, by design:** datasets, pretrained or trained weights, prediction
-maps, and any unmodified code from other projects. The sections below say where
-to get each of them and where to put it.
+**Not included, by design:** datasets, backbone and other upstream weights,
+trained SCOUT and SalM² checkpoints, prediction maps, and any unmodified code
+from other projects. The sections below say where to get each of them and
+where to put it.
 
 ## Datasets
 
@@ -59,7 +61,7 @@ and adds run notes.
 | U²-Net | https://github.com/xuebinqin/U-2-Net | `ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29` | `/opt/u2net` |
 | GBVS | https://github.com/shreelock/gbvs | `4c7e3c58e786d053ec4ae6fb9d03bdfeea2c539a` | `/opt/gbvs` |
 
-**Weights.** None are included here.
+**Upstream weights.** None are included here; get them as follows.
 - **SCOUT:** Trained for this benchmark from the configs in wrappers/configs/ (no task input, pretrained backbone as in upstream). Each prediction run.json records the checkpoint used and its sha256.
 - **SalM²:** Trained for this benchmark (frames only, frozen CLIP ViT-B/32 image branch). Each prediction run.json records the checkpoint, epoch and sha256.
 - **DINOv3:** ViT-L/16 distilled (dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth) and ViT-B/16 distilled (dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth), LVD-1689M, placed in /srv/models/dinov3/. Meta distributes these under the DINOv3 License through an access request form: https://ai.meta.com/resources/models-and-libraries/dinov3-downloads/ .
@@ -70,6 +72,22 @@ and adds run notes.
 
 Please cite the upstream projects when you use them; each repository's README
 gives its reference.
+
+### Using the deposited decoder heads
+
+Each file in `weights/` holds the decoder only (`decoder`, plus the epoch,
+validation scores and arguments of the run that produced it). The frozen
+backbone is not in the file: download it as listed above. To predict without
+retraining, take that run's command from `COMMANDS.md`, give it a new `--out`,
+and add:
+
+```bash
+--predict-only --ckpt weights/vjepa21/bdda_vitl16_light_s10_c8s7.pt
+```
+
+Decoder heads for the DINOv3 runs are not deposited. Retrain them with the
+DINOv3 commands in `COMMANDS.md`; each takes the settings recorded in
+`results/training/dinov3/`.
 
 ## Directory layout
 
@@ -136,11 +154,16 @@ repositories. Where an upstream license applies to them it is reproduced as
 `LICENSE.upstream` beside them; apart from those license notices, no unmodified
 upstream file is included.
 
+Built with DINOv3. The DINOv3 backbone is used under the DINOv3 License, a copy
+of which is in `baselines/DINOv3/LICENSE.upstream`; V-JEPA 2.1 is used under
+its MIT license.
+
 ## License
 
-Code: MIT (`LICENSE`). Scores, split lists, center-bias maps and decision files:
-CC BY 4.0. Datasets and upstream code and weights remain under their owners'
-terms.
+- Code: MIT (`LICENSE`).
+- Scores, split lists, center-bias maps and decision files: CC BY 4.0.
+- Decoder weights in `weights/`: CC BY 4.0.
+- Datasets and upstream code and weights remain under their owners' terms.
 
 ## Citation
 

@@ -17,36 +17,6 @@ them. Flags were checked against each script's `--help` unless noted.
 
 ## training
 
-### `results/training/dinov3/bdda_vitb16_light_s10`
-
-```bash
-python train_gaze.py \
-    --hub dinov3_vitb16 \
-    --weights "$MODELS/dinov3/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth" \
-    --repo "$BASELINES/dinov3" \
-    --root "$DATASETS/BDDA" \
-    --splits meta/splits \
-    --test-manifests test_common \
-    --out "$RESULTS/dinov3/bdda_vitb16_light_s10" \
-    --input 288 512 \
-    --target 72 128 \
-    --pred-size 72 128 \
-    --width 128 \
-    --epochs 30 \
-    --bs 32 \
-    --lr 0.001 \
-    --wd 0.0001 \
-    --warmup 500 \
-    --stride 10 \
-    --val-stride 5 \
-    --workers 4 \
-    --gpu 0 \
-    --seed 0 \
-    --max-steps 0 \
-    --log-every 100 \
-    --cache "$CACHE/bdda_288x512"
-```
-
 ### `results/training/dinov3/bdda_vitl16_light_s10`
 
 ```bash

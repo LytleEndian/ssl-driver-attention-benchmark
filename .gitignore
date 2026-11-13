@@ -3,8 +3,9 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 
-# weights go to the GitHub release, not the repo
+# no weights in the repo, except the trained decoder heads under weights/
 *.pt
+!weights/**/*.pt
 *.pth
 *.ckpt
 *.safetensors
