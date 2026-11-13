@@ -24,7 +24,7 @@ DOI: [DOI pending]
 | `results/in-domain/`, `results/cross-dataset/`, `results/agreement/` | Per run: per-video scores, summary or pairwise tables and `run.json`, to check a replication against |
 | `results/training/`, `results/prediction/` | `run.json` (settings) and scores for each gaze-head training run and baseline prediction run |
 | `baselines/` | For each upstream project: repository, commit used, and the patch or wrapper files written for this benchmark |
-| `weights/` | Trained gaze-decoder heads for the V-JEPA 2.1 ViT-L/16 runs (decoder only, about 0.6M parameters each), with `SHA256SUMS` |
+| `weights/` | Trained gaze-decoder heads for the reported DINOv3 ViT-L/16 and V-JEPA 2.1 ViT-L/16 runs on BDD-A and CoCAtt (decoder only, about 0.6M parameters each), with `SHA256SUMS` |
 | `COMMANDS.md` | The command for every deposited run, rebuilt from its `run.json` |
 | `requirements.txt` | Pinned environment (Python 3.12.3, PyTorch 2.7.1) |
 
@@ -85,9 +85,7 @@ and add:
 --predict-only --ckpt weights/vjepa21/bdda_vitl16_light_s10_c8s7.pt
 ```
 
-Decoder heads for the DINOv3 runs are not deposited. Retrain them with the
-DINOv3 commands in `COMMANDS.md`; each takes the settings recorded in
-`results/training/dinov3/`.
+These are the heads behind the reported DINOv3 and V-JEPA 2.1 numbers.
 
 ## Directory layout
 
@@ -162,7 +160,11 @@ its MIT license.
 
 - Code: MIT (`LICENSE`).
 - Scores, split lists, center-bias maps and decision files: CC BY 4.0.
-- Decoder weights in `weights/`: CC BY 4.0.
+- Decoder weights in `weights/vjepa21/`: CC BY 4.0.
+- Decoder weights in `weights/dinov3/`: these were trained on DINOv3 features.
+  They contain no DINOv3 weights or code, but to the extent they are a
+  derivative work of the DINO Materials they are provided under the terms of
+  the DINOv3 License (`baselines/DINOv3/LICENSE.upstream`), not CC BY 4.0.
 - Datasets and upstream code and weights remain under their owners' terms.
 
 ## Citation
